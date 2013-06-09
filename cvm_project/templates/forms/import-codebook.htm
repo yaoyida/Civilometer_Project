@@ -1,0 +1,25 @@
+<div class="modal" id="myModal">
+  <div class="modal-header">
+    <button class="close" data-dismiss="modal">&times;</button>
+    <h3>Import new codebook</h3>
+  </div>
+  <div class="modal-body">
+    <form method="POST" enctype="multipart/form-data" class="form-horizontal tb-basic" action="/ajax/import-codebook/"><fieldset>
+      {% csrf_token %}
+
+      <div class="control-group">
+        <label class="control-label" for="fileInput">File</label>
+        <div class="controls">
+          <input class="input-file" name="fileInput" type="file">
+          <br/>
+          Please import your codebook here.
+        </div>
+      </div>
+
+      <br/><br/>
+      <button type="submit" class="btn btn-primary rightside">Import &raquo;</button>
+      <button type="cancel" class="btn rightside">Cancel &times;</button>
+    </fieldset></form>
+  </div>
+</div>
+

@@ -1,0 +1,13 @@
+=== Big picture ===
+
+2012/07/23:
+Right now, the goal is to get mturk integration working.  First, we'll go over the data pipeline.  Then we'll revise the same pages for usability.
+
+
+=== Milestones ===
+1. Scaffold admin pages
+2. Get mturk integration working
+3. Get codebook explanation, etc. in place
+    Data in
+4.
+    Data out

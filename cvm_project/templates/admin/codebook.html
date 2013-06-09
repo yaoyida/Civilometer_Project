@@ -1,0 +1,289 @@
+{% extends "base/document-control.html" %}
+{% load cvm_app_tags %}
+
+{% block start_scripts %}
+
+<script type="text/javascript">
+//var codebook_id = "";
+var codebookManager = new CodebookManager()
+
+codebookManager.initControls = function(){
+    var codebookManager = this;
+    
+    this.attachControlsToQuestion(0);
+    
+    //Activate button controls
+	$('#add_control').click( function(){ codebookManager.addQuestion(); } );
+	$('#del_control').click( function(){ codebookManager.delQuestion(); } );
+	$('#up_control').click( function(){ codebookManager.moveQuestionUp(); } );
+	$('#down_control').click( function(){ codebookManager.moveQuestionDown(); } );
+    
+    //AJAX to save the codebook
+    //! This should be part of CodebookManager
+    $("#save-codebook").click(function(){
+	    $.post(
+            "/ajax/save-codebook/",
+            {
+                'parent_id': codebookManager.codebook_id,
+                'questions': codebookManager.getCodebookJson(),
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            function(response){                
+                //! Need error checking for failed responses.
+                location.href = '/codebook/'+response._id;
+            }
+        );
+    });
+};
+
+codebookManager.addStylesToQuestion = function(Q){
+    $(".shim-graph").hide();
+    
+    Q
+        .unbind('click mouseenter mouseleave')
+        .hover( 
+            function(){$(this).addClass('hoverQuestion');},
+            function(){$(this).removeClass('hoverQuestion');}
+        )
+        .click( function(){
+            codebookManager.attachControlsToQuestion( $(this).index(".questionBox") );
+        });
+};
+
+codebookManager.attachControlsToQuestion = function(i){
+    //Change the targetQuestion in the model
+    //console.log(i);
+    this.targetQuestion(i);
+
+    //Set index variables
+    qB = $(".questionBox:eq("+i+")");        //The DOM object for the selected questionBox
+    qC = $("#questionControls");             //The DOM object for the questionControls div
+    qM = this.questions()[i];       //The question object in the knockout.js model
+    qA = qM.questionArguments[qM.question_type()];    //The questionArguments object in the knockout.js model
+
+    //Add content within the control box: variable type and name
+    qC
+        .html( "Variable type<br/><select data-bind=\"options: questionTypes, value: questions()["+i+"].question_type, event: {change: function(event){codebookModel.changeQuestionType(event.target.value);}}\"></select><br/>" )
+        .append( "Variable name<input type=\"text\" style=\"width:250px\" data-bind=\"value: questions()["+i+"].var_name, event: {change: function(event){codebookModel.questions()["+i+"].changeQuestionName(event.target.value);}}\"></input><br/>" );
+
+    //Add content within the control box: variable parameters
+    for( p in qA ){
+        if( p in qM.params ){
+//            alert( p + ": " + qM.params[p]() );//+ "\n" + $.isArray( qM.params[p]() ) );// + ": " + $.isArray( qM.params[p]() );
+            if( $.isArray( qM.params[p]() ) ){
+                qC.append( qA[p].label + "<textarea rows=\"5\" style=\"width:250px\" data-bind=\"event: {change: function(event){codebookModel.questions()['"+i+"'].updateParams('"+p+"', event.target.value.split('\\n'));}}\">" + qM.params[p]().join('\n') + "</textarea><br/>" )
+            }
+            else{
+                qC.append( qA[p].label +"<textarea rows=\"5\" style=\"width:250px\" data-bind=\"value: questions()["+i+"].params."+p+"\"></input><br/>" );
+//                qC.append( qA[p].label +"<input type=\"text\" style=\"width:250px\" data-bind=\"value: questions()["+i+"].params."+p+"\"></input><br/>" );
+            }
+        }
+    }
+
+    //Re-bind questionControls
+    ko.applyBindings(codebookManager, qC[0]);
+};
+
+$(function(){
+    //Highlight "my-account" in nav bar
+    $('a[href*="/shared-resources/"]').parent().addClass("active");
+
+	//Load the codebook on initialization.
+    codebookManager.init('{{ codebook|mongo_id }}', '{{ csrf_token }}');
+});
+</script>
+{% endblock %}
+
+{% block menu %}{% include "admin/menu.htm" %}{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container">
+<ul class="breadcrumb">
+  <li>
+    <a href="/shared-resources/#codebooks">Codebooks</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="#">{{codebook.profile.name}} ({{codebook.profile.version}})</a></span>
+  </li>
+</ul>
+</div>
+{% endblock %}
+
+{% block doc_classes %}span3 well offset3{% endblock %}
+
+{% block title %}
+{% endblock %}
+
+{% block document %}
+    {% for question in codebook.questions %}
+
+        {% if question.question_type == "Static text" %}<br/>
+            <div class="headerText">{{question.params.header_text|safe}}</div>
+        {% endif %}
+
+        {% if question.question_type == "Two-way scale" %}
+            <div class="headerText">{{question.params.header_text|safe}}</div>
+            <table class="matrixQuestion">
+                <tr>
+                    <td></td>
+                    {% for variable in question.params.answer_array %}<td>{{variable|safe}}</td>{% endfor %}
+                    <td></td>
+                </tr>
+                <tr class="questionMarkupAnchor">
+                    <td class="leftCol">{{question.params.left_statement|safe}}</td>
+                    {% for variable in question.params.answer_array %}<td class="clickable">
+                        <div class="shim-graph"></div>
+                        <input type="radio" name="Q{{forloop.parentloop.counter}}{% if question.var_name %}_{{question.var_name}}{% endif %}" value="{{forloop.counter}}"></input>
+                    </td>{% endfor %}
+                    <td class="rightCol">{{question.params.right_statement|safe}}</td>
+                </tr>
+            </table>
+        {% endif %}
+
+        {% if question.question_type == "Multiple choice" %}
+            <div class="questionMarkupAnchor">
+                <div class="headerText">{{question.params.header_text|safe}}</div>
+                <table class="MatrixQuestion">
+                {% for variable in question.params.answer_array %}
+                    <tr class="clickable">
+                        <td class="leftCol">
+                             <div class="shim-graph"></div>
+                             <input type="radio" name="Q{{forloop.parentloop.counter}}{% if question.var_name %}_{{question.var_name}}{% endif %}" value="{{forloop.counter}}"></input>
+                        </td>
+                        <td class="rightCol">{{variable|safe}}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        {% endif %}
+
+        {% if question.question_type == "CATA" %}
+            <div class="questionMarkupAnchor">
+                <div class="headerText">{{question.params.header_text|safe}}</div>
+                <table class="MatrixQuestion">
+                {% for variable in question.params.answer_array %}
+                    <tr class="clickable">
+                        <td class="leftCol">
+                            <div class="shim-graph"></div>
+                            <input type="checkbox" name="Q{{forloop.parentloop.counter}}{% if question.var_name %}_{{question.var_name}}{% endif %}" value="{{forloop.counter}}"></input>
+                        </td>
+                        <td class="rightCol">{{variable|safe}}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        {% endif %}
+
+        {% if question.question_type == "Radio matrix" %}
+	        <div class="headerText">{{question.params.header_text|safe}}</div>
+	        <table class="matrixQuestion">
+		        <thead><td></td>{% for variable in question.params.answer_array %}<td>{{variable}}</td>{% endfor %}</thead>
+		        {% for variable in question.params.question_array %}
+			        <tr class="questionMarkupAnchor {% cycle 'odd' 'even' %}">
+                        <td class="textCol">{{variable|safe}}</td>
+                        {% for j in question.params.answer_array %}<td class="clickable">
+                            <div class="shim-graph"></div>
+                            <input type="radio" name="Q{{forloop.parentloop.parentloop.counter}}_{{forloop.parentloop.counter}}{% if question.var_name %}_{{question.var_name}}{% endif %}" value="{{forloop.counter}}"></input>
+                        </td>{% endfor %}
+                    </tr>
+		        {% endfor %}
+	        </table>
+        {% endif %}
+
+        {% if question.question_type == "Checkbox matrix" %}
+	        <div class="headerText">{{question.params.header_text|safe}}</div>
+	        <table class="matrixQuestion">
+		        <thead><td></td>{% for variable in question.params.answer_array %}<td>{{variable}}</td>{% endfor %}</thead>
+		        {% for variable in question.params.question_array %}
+			        <tr class="{% cycle 'odd' 'even' %}">
+                        <td class="textCol">{{variable|safe}}</td>
+                        {% for j in question.params.answer_array %}<td class="questionMarkupAnchor clickable">
+                            <div class="shim-graph"></div>
+                            <input type="checkbox" name="Q{{forloop.parentloop.parentloop.counter}}_{{forloop.parentloop.counter}}{% if question.var_name %}_{{question.var_name}}{% endif %}" value="{{forloop.counter}}"></input>
+                        </td>{% endfor %}
+                    </tr>
+		        {% endfor %}
+	        </table>
+        {% endif %}
+
+        
+        {% if question.question_type == "Two-way matrix" %} 
+	        <div class="headerText">{{question.params.header_text|safe}}</div>
+            <h3>Question type not yet supported: {{question.question_type}}</h3>
+
+            {% comment %}
+	        <table class="matrixQuestion">
+		        <tr>
+			        <td></td>
+			        {% for variable in question.params.answer_array %}<td>{{variable}}</td>{% endfor %}
+			        <td></td>
+		        </tr>
+
+		        {% for left_statement in question.params.left_statements %}
+			        <tr class="questionMarkupAnchor {% cycle 'odd' 'even' %}">
+				        <td class="leftCol">{{left_statement|safe}}</td>
+				        {% for i in question.params.answer_array %}<td class="clickable">
+                            <div class="shim-graph"></div>
+                            <input type="radio" name="Q{{forloop.parentloop.parentloop.counter}}_{{forloop.parentloop.counter}}{% if question.var_name %}_{{question.var_name}}{% endif %}" value="{{forloop.counter}}"></input>
+                        </td>
+                        {% endfor %}
+				        <td class="rightCol">{{statement.right_statements|safe}} RRR</td>
+			        </tr>
+		       {% endfor %}
+	        </table>
+        {% endcomment %}{% endif %}
+
+        {% if question.question_type == "Text" %}
+            <div class=" questionMarkupAnchor">
+                <div class="headerText questionMarkupAnchor">{{question.params.header_text|safe}}</div>
+                <div class="shim-graph"></div>
+                <input type="text" name="Q{{forloop.counter}}{% if question.var_name %}_{{question.var_name}}{% endif %}" value="" size="{{question.params.cols}}"></input>
+            </div>
+        {% endif %}
+
+        {% if question.question_type == "Short essay" %}
+            <div class=" questionMarkupAnchor">
+                <div class="headerText">{{question.params.header_text|safe}}</div>
+                <div class="shim-graph"></div>
+                <textarea name="Q{{forloop.counter}}{% if question.var_name %}_{{question.var_name}}{% endif %}" cols="{{question.params.cols}}" rows="{{question.params.rows}}"></textarea>
+            </div>
+        {% endif %}
+
+        {% if question.question_type == "Text matrix" %}
+	        <div class="headerText">{{question.params.header_text|safe}}</div>
+	        <table class="matrixQuestion">
+		        {% for variable in question.params.answer_array %}
+			        <tr class="questionMarkupAnchor {% cycle 'odd' 'even' %}">
+                        <td class="textCol">{{variable}}</td>
+                        <td>
+                            <div class="shim-graph"></div>
+                            <input type="text" name="Q{{forloop.parentloop.counter}}_{{forloop.counter}}{% if question.var_name %}_{{question.var_name}}{% endif %}" size="{{question.params.cols}}"></input>
+                        </td>
+                    </tr>
+		        {% endfor %}
+	        </table>
+        {% endif %}
+
+    {% endfor %}
+{% endblock %}
+
+{% block control %}
+
+<h3>{{codebook.profile.name}} ({{codebook.profile.version}})</h3>
+<hr />
+<a class="btn btn-primary open-modal rightside">Edit codebook info</a>
+{% include "forms/edit-codebook.htm" %}
+<div id="control-codebook">
+    <h4>Codebook</h4>
+    <strong>Name</strong>
+    <p>{{ codebook.profile.name }}</p>
+
+    <strong>Description</strong>
+    <p>{{ codebook.profile.description }}</p>
+
+    <strong>Version</strong>
+    <p>{{ codebook.profile.version }}</p>
+</div>
+
+{% endblock %}
+

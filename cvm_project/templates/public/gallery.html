@@ -1,0 +1,103 @@
+{% extends "base/base.html" %}
+
+{% block start_scripts %}
+<script type="text/javascript">
+
+var graphs = new cvmGraphs();
+
+$(function(){
+	//Add 80 masonry blocks
+	for( i=0; i<80; i++ ){
+		$('#mini-blocks').append('<div class="cvm-masonry"></div>');
+	}
+
+	//Fill in content at random
+	$('#mini-blocks div.cvm-masonry:not(.cvm-masonry-hero)').each(function(i,b){
+
+		var rand = Math.random();
+		if( rand < .4 ){
+			//Update-style block
+            var msg = "Found "+Math.floor(2+Math.random()*20)+" new "+cvmManager.getRandomSource()+"s at <a href='#'>"+cvmManager.getRandomUrl()+"</a>.  Autotags: "+cvmManager.getRandomTags(Math.floor(Math.random()*4+1));
+
+			$(b).html('<div class="corner-right"></div><p>'+msg+'</p>');
+            /*
+            $('p', b)
+				.lorem({type: 'words',amount:(Math.round(Math.random()*10)+4)})
+				.prepend('<strong></strong>: ');
+			$("strong", b).lorem({type: 'words',amount:(Math.round(Math.random()*5)+1)});
+			*/
+		}else if( rand < .7 ){
+			//Squib-style block
+			var msg = "This "+cvmManager.getRandomSource()+" was rated "+cvmManager.getRandomQuality()+" on "+cvmManager.getRandomCodebook()+": ";
+
+			$(b)
+				.addClass('well')
+				.html('<div class="corner-right"></div><strong>'+msg+'</strong><p></p>');
+			$(".corner-right", b).html('<img src="'+cvmManager.getRandomImage()+'" class="flavor-pic"></img>');
+//			$("strong", b).lorem({type: 'words',amount:(Math.round(Math.random()*5)+1)});
+			$('p', b).lorem({type: 'words',amount:(Math.round(Math.random()*30)+4)});
+
+		}else{
+			//Plot-style block
+			$(b)
+				.addClass('well')
+				.html('<strong></strong><div id="graph-'+i+'"></div>');
+			if( Math.random() > .8 ){
+				$(b).addClass("double-wide");
+			}
+			$("strong", b).lorem({type: 'words',amount:(Math.round(Math.random()*6)+3)});
+
+    var temp_object = {
+        "api": "/api/query-count/",
+        "query": {
+          "batch_id": "5012f12e0a665e12d4a6f296",
+          "query_word" : "whatever"
+        },
+        "fn": "timeSeries",
+        "ele": "#graph-"+i
+      };
+
+graphs.genChart(temp_object);		}
+
+/*
+		//Plot-style block
+		$(b)
+			.addClass('well double-wide')
+			.html('<strong></strong><div id="graph-'+i+'"></div>');
+		$("strong", b).lorem({type: 'words',amount:(Math.round(Math.random()*6)+3)});
+		graphs.randomPlot( "#graph-"+i );
+*/
+
+	});
+
+	//Masonify pages after all images load.
+	//! This duplicates code in cvm.js.  Really, masonry should be called once at the **end** of all pages.
+	$('#mini-blocks').imagesLoaded( function(){
+		$('#mini-blocks').masonry({
+			itemSelector : 'div.cvm-masonry',
+			columnWidth: 290
+		});
+	});
+});
+</script>{% endblock %}
+
+{% block menu %}{% include "public/menu.htm" %}{% endblock %}
+{% block overlays %}{% include "public/overlays.htm" %}{% endblock %}
+
+{% block main_container %}
+<div id="mini-blocks" class="row">
+	<div class="cvm-masonry-hero cvm-masonry well">
+		<div class="corner-left">
+			<img src="{{ STATIC_URL }}img/random/noun_project_2416.png"><br/>
+			<span class="label yes-do-this">Good idea!</span>
+		</div>
+		<h2>Gallery</h2>
+		<p>This page shows all the latest activity on the site.  Content, data, and graphs all flow through here.</p>
+		<p>By providing examples, ideas, and inspiration, it turns the civilometer into a creative, social space.</p>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block end_scripts %}{% include "public/end-scripts.htm" %}{% endblock %}
+

@@ -1,0 +1,223 @@
+{
+	"_id" : ObjectId("501c06d10a665e0fdbeab251"),
+	"documents" : [
+		{
+			"document_id" : ObjectId("5010467b0a665e16b6251e19"),
+			"labels" : {
+				"1" : {
+					"finished_at" : "",
+					"game_session_id" : "",
+					"created_at" : "",
+					"answers" : {
+						
+					}
+				},
+				"0" : {
+					"finished_at" : ISODate("2012-08-03T13:14:55.042Z"),
+					"game_session_id" : "501c06f20a665e0fdbeab255",
+					"created_at" : ISODate("2012-08-03T13:14:49.177Z"),
+					"answers" : {
+						"Q2_mchoice" : "1",
+						"Q3_essay" : "aaaaa"
+					}
+				}
+			},
+			"index" : 0
+		},
+		{
+			"document_id" : ObjectId("5010467b0a665e16b6251e19"),
+			"labels" : {
+				"1" : {
+					"finished_at" : "",
+					"game_session_id" : "",
+					"created_at" : "",
+					"answers" : {
+						
+					}
+				},
+				"0" : {
+					"finished_at" : ISODate("2012-08-03T13:14:13.194Z"),
+					"game_session_id" : "501c06dd0a665e0fdbeab252",
+					"created_at" : ISODate("2012-08-03T13:14:05.930Z"),
+					"answers" : {
+						"Q2_mchoice" : "3",
+						"Q3_essay" : "dddd"
+					}
+				}
+			},
+			"index" : 1
+		},
+		{
+			"document_id" : ObjectId("5010467b0a665e16b6251e19"),
+			"labels" : {
+				"1" : {
+					"finished_at" : "",
+					"game_session_id" : "",
+					"created_at" : "",
+					"answers" : {
+						
+					}
+				},
+				"0" : {
+					"finished_at" : ISODate("2012-08-03T13:15:03.651Z"),
+					"game_session_id" : "501c06f20a665e0fdbeab255",
+					"created_at" : ISODate("2012-08-03T13:14:55.044Z"),
+					"answers" : {
+						"Q2_mchoice" : "3",
+						"Q3_essay" : "aaaaa"
+					}
+				}
+			},
+			"index" : 2
+		},
+		{
+			"document_id" : ObjectId("5010467b0a665e16b6251e19"),
+			"labels" : {
+				"1" : {
+					"finished_at" : "",
+					"game_session_id" : "",
+					"created_at" : "",
+					"answers" : {
+						
+					}
+				},
+				"0" : {
+					"finished_at" : ISODate("2012-08-03T13:14:44.089Z"),
+					"game_session_id" : "501c06f20a665e0fdbeab255",
+					"created_at" : ISODate("2012-08-03T13:14:39.107Z"),
+					"answers" : {
+						"Q2_mchoice" : "2",
+						"Q3_essay" : "aaaa"
+					}
+				}
+			},
+			"index" : 3
+		},
+		{
+			"document_id" : ObjectId("5010467b0a665e16b6251e19"),
+			"labels" : {
+				"1" : {
+					"finished_at" : "",
+					"game_session_id" : "",
+					"created_at" : "",
+					"answers" : {
+						
+					}
+				},
+				"0" : {
+					"finished_at" : ISODate("2012-08-03T13:14:34.825Z"),
+					"game_session_id" : "501c06f20a665e0fdbeab255",
+					"created_at" : ISODate("2012-08-03T13:14:26.470Z"),
+					"answers" : {
+						"Q2_mchoice" : "2",
+						"Q3_essay" : "aaa"
+					}
+				}
+			},
+			"index" : 4
+		},
+		{
+			"document_id" : ObjectId("5010467b0a665e16b6251e19"),
+			"labels" : {
+				"any" : {
+					"finished_at" : ISODate("2012-08-03T13:14:49.175Z"),
+					"game_session_id" : "501c06f20a665e0fdbeab255",
+					"created_at" : ISODate("2012-08-03T13:14:44.091Z"),
+					"answers" : {
+						"Q2_mchoice" : "2",
+						"Q3_essay" : "aaa"
+					}
+				}
+			},
+			"index" : 5
+		},
+		{
+			"document_id" : ObjectId("5010467b0a665e16b6251e19"),
+			"labels" : {
+				"any" : {
+					"finished_at" : ISODate("2012-08-03T13:14:39.105Z"),
+					"game_session_id" : "501c06f20a665e0fdbeab255",
+					"created_at" : ISODate("2012-08-03T13:14:34.827Z"),
+					"answers" : {
+						"Q2_mchoice" : "2",
+						"Q3_essay" : "ddd"
+					}
+				}
+			},
+			"index" : 6
+		},
+		{
+			"document_id" : ObjectId("5010467b0a665e16b6251e19"),
+			"labels" : {
+				"any" : {
+					"finished_at" : "",
+					"game_session_id" : "501c06ef0a665e0fdbeab254",
+					"created_at" : ISODate("2012-08-03T13:14:24.052Z"),
+					"answers" : {
+						
+					}
+				}
+			},
+			"index" : 7
+		},
+		{
+			"document_id" : ObjectId("5010467b0a665e16b6251e19"),
+			"labels" : {
+				"any" : {
+					"finished_at" : "",
+					"game_session_id" : "501c06dd0a665e0fdbeab252",
+					"created_at" : ISODate("2012-08-03T13:14:13.196Z"),
+					"answers" : {
+						
+					}
+				}
+			},
+			"index" : 8
+		},
+		{
+			"document_id" : ObjectId("5010467b0a665e16b6251e19"),
+			"labels" : {
+				"any" : {
+					"finished_at" : "",
+					"game_session_id" : "501c06ee0a665e0fdbeab253",
+					"created_at" : ISODate("2012-08-03T13:14:22.656Z"),
+					"answers" : {
+						
+					}
+				}
+			},
+			"index" : 9
+		}
+	],
+	"profile" : {
+		"collection_ids" : [
+			ObjectId("5010467b0a665e16b6251e19")
+		],
+		"description" : "Collection A * Yida's new codebook (1)",
+		"codebook_id" : ObjectId("50102f7f0a665e14a6b990ab"),
+		"replication" : 2,
+		"game_setup" : {
+			"bonus_amount" : 2,
+			"exchange_rate" : 2,
+			"bonus_frequency" : 25
+		},
+		"pct_overlap" : 50,
+		"index" : 1,
+		"name" : "Batch 1",
+		"created_at" : ISODate("2012-08-03T13:13:53.762Z"),
+		"parent_batch_id" : null,
+		"doc_size" : 10
+	},
+	"reports" : {
+		"progress" : {
+			"task_remaining_list" : [
+				0,
+				5
+			]
+		},
+		"reliability" : {
+			
+		}
+	}
+}
+

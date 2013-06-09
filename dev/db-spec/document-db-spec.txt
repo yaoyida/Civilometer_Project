@@ -1,0 +1,16 @@
+{
+    "_id" : ObjectId("2757983203912"),
+    "content" : "fjeifjalfkeiofjeifja",
+    "metadata" : {
+        "words" : "100",
+        "sentences" : "14",
+    },
+    "civility-labels" : {
+        "codebook-id" : {
+            "score" : 7,
+            "uncertainty" : 2.5,
+            "last_updated" : datetime,
+            "method" : "",
+        }
+    }
+}

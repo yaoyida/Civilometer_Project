@@ -1,0 +1,100 @@
+Line graph (multiple) : Trends in information gathering, neutral voice, and sources and evidence about abortion between July 2008 and November 2008
+Word cloud : Words associated (and disassociated) with information gathering
+Word cloud : Words associated (and disassociated) with shouting about jobs
+Word cloud : Words associated (and disassociated) with information gathering about climate change
+Word cloud : Words associated (and disassociated) with respect for others about Mitt Romney
+Line graph (multiple) : Trends in respect for others, humor, and neutral voice about federal debt in the last year
+Bar graph : Use of appeals to anger and fear in campaign ads about climate change
+Word cloud : Words associated (and disassociated) with neutral voice about jobs
+Word cloud : Words associated (and disassociated) with sources and evidence about climate change
+Bar graph : Use of information gathering by political party
+Line graph (single) : Trends in respect for others about Barack Obama in the last 30 days
+Bar graph : Use of appeals to anger and fear by media type
+Line graph (single) : Trends in neutral voice about Barack Obama in the last year
+Bar graph : Use of neutral voice in newspaper editorials about abortion
+Line graph (multiple) : Trends in appeals to anger and fear, humor, and information gathering about Democrats since 2008
+Line graph (single) : Trends in information gathering about Democrats since January
+Word cloud : Words associated (and disassociated) with shouting about Mitt Romney
+Line graph (multiple) : Trends in neutral voice, public import, and shouting about Barack Obama since the midterm elections
+Word cloud : Words associated (and disassociated) with respect for others about Barack Obama
+Line graph (single) : Trends in humor about health care since the midterm elections
+Line graph (multiple) : Trends in public import, neutral voice, and respect for others about Barack Obama since January
+Line graph (single) : Trends in humor about jobs since January
+Word cloud : Words associated (and disassociated) with public import about climate change
+Word cloud : Words associated (and disassociated) with neutral voice about climate change
+Line graph (single) : Trends in public import about abortion since January
+Word cloud : Words associated (and disassociated) with divisiveness
+Line graph (single) : Trends in shouting about government spending since the midterm elections
+Line graph (multiple) : Trends in humor, shouting, and public import about karate in the last nine months
+Word cloud : Words associated (and disassociated) with divisiveness
+Line graph (single) : Trends in divisiveness about abortion since 2010
+Line graph (multiple) : Trends in divisiveness, information gathering, and humor about inflation since 2004
+Line graph (single) : Trends in appeals to anger and fear about karate in the last 30 days
+Bar graph : Use of appeals to anger and fear in newspaper editorials about federal debt
+Line graph (multiple) : Trends in shouting, sources and evidence, and appeals to anger and fear about federal debt in the last 60 days
+Line graph (multiple) : Trends in sources and evidence, respect for others, and humor about government spending between July 2008 and November 2008
+Word cloud : Words associated (and disassociated) with appeals to anger and fear
+Word cloud : Words associated (and disassociated) with humor about federal debt
+Bar graph : Use of sources and evidence in talk radio about Barack Obama
+Line graph (multiple) : Trends in information gathering, public import, and appeals to anger and fear about inflation between July 2008 and November 2008
+Word cloud : Words associated (and disassociated) with information gathering about health care
+Line graph (multiple) : Trends in shouting, public import, and sources and evidence about education since 2008
+Line graph (single) : Trends in respect for others about inflation since 2000
+Bar graph : Use of appeals to anger and fear by state
+Line graph (single) : Trends in public import about government spending in the last year
+Word cloud : Words associated (and disassociated) with information gathering about Mitt Romney
+Line graph (multiple) : Trends in humor, neutral voice, and appeals to anger and fear about government spending since 2000
+Line graph (single) : Trends in appeals to anger and fear about Mitt Romney since 2008
+Bar graph : Use of sources and evidence in TV news about Mitt Romney
+Line graph (single) : Trends in public import about abortion since the midterm elections
+Line graph (multiple) : Trends in appeals to anger and fear, sources and evidence, and neutral voice about Mitt Romney since 2010
+Line graph (multiple) : Trends in shouting, public import, and humor about Democrats since 2008
+Line graph (multiple) : Trends in public import, respect for others, and information gathering about climate change since the midterm elections
+Line graph (single) : Trends in divisiveness about Democrats in the last year
+Line graph (single) : Trends in public import about health care since January
+Line graph (single) : Trends in divisiveness about inflation in the last 60 days
+Bar graph : Use of humor in talk radio about health care
+Line graph (single) : Trends in neutral voice about jobs since 2010
+Word cloud : Words associated (and disassociated) with neutral voice about abortion
+Bar graph : Use of divisiveness by political party
+Word cloud : Words associated (and disassociated) with divisiveness about inflation
+Line graph (multiple) : Trends in public import, respect for others, and neutral voice about inflation in the last 30 days
+Line graph (single) : Trends in humor about federal debt since 2010
+Word cloud : Words associated (and disassociated) with public import about federal debt
+Word cloud : Words associated (and disassociated) with humor about inflation
+Line graph (single) : Trends in humor about abortion since 2010
+Line graph (single) : Trends in humor about climate change since 2008
+Line graph (multiple) : Trends in humor, information gathering, and respect for others about karate since the midterm elections
+Word cloud : Words associated (and disassociated) with sources and evidence
+Word cloud : Words associated (and disassociated) with sources and evidence about inflation
+Word cloud : Words associated (and disassociated) with divisiveness
+Word cloud : Words associated (and disassociated) with sources and evidence about health care
+Line graph (multiple) : Trends in public import, information gathering, and humor about Mitt Romney since 2004
+Line graph (multiple) : Trends in shouting, appeals to anger and fear, and public import about health care in the last 60 days
+Line graph (multiple) : Trends in shouting, appeals to anger and fear, and sources and evidence about jobs in the last 60 days
+Bar graph : Use of sources and evidence in news magazines about jobs
+Word cloud : Words associated (and disassociated) with shouting
+Line graph (multiple) : Trends in information gathering, neutral voice, and sources and evidence about abortion in the last nine months
+Word cloud : Words associated (and disassociated) with shouting
+Word cloud : Words associated (and disassociated) with appeals to anger and fear about Democrats
+Line graph (single) : Trends in public import about abortion since January
+Bar graph : Use of sources and evidence in talk radio about education
+Word cloud : Words associated (and disassociated) with humor
+Line graph (single) : Trends in humor about Mitt Romney in the last nine months
+Word cloud : Words associated (and disassociated) with shouting about health care
+Line graph (multiple) : Trends in humor, respect for others, and public import about Barack Obama between July 2008 and November 2008
+Line graph (multiple) : Trends in appeals to anger and fear, shouting, and information gathering about Mitt Romney since January
+Line graph (single) : Trends in public import about Democrats since the midterm elections
+Bar graph : Use of respect for others in blogs about education
+Line graph (multiple) : Trends in humor, neutral voice, and information gathering about climate change since 2004
+Bar graph : Use of humor by media type
+Line graph (multiple) : Trends in appeals to anger and fear, public import, and sources and evidence about government spending since 2004
+Bar graph : Use of shouting by state
+Word cloud : Words associated (and disassociated) with divisiveness about education
+Line graph (multiple) : Trends in sources and evidence, shouting, and public import about inflation in the last 30 days
+Word cloud : Words associated (and disassociated) with humor about Mitt Romney
+Line graph (single) : Trends in appeals to anger and fear about federal debt between July 2008 and November 2008
+Line graph (single) : Trends in respect for others about education since 2010
+Word cloud : Words associated (and disassociated) with neutral voice
+Word cloud : Words associated (and disassociated) with humor about health care
+Line graph (multiple) : Trends in neutral voice, appeals to anger and fear, and shouting about Barack Obama since the midterm elections

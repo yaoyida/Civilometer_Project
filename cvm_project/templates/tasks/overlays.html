@@ -1,0 +1,188 @@
+<div class="modal show fade" id="task-instructions-modal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Instructions</h3>
+  </div>
+  <div class="modal-body">
+
+    <h3>How it works</h3>
+    <p><ol>
+        <li>Read the article on the left</li>
+        <li>Answer the questions on the right</li>
+        <li>Score points when your answers match the experts!</li>
+    </ol></p>
+
+    <h3>Scored tasks</h3>
+    <p>For some tasks, the questions have been answered previously by experts.  These <strong>scored tasks</strong> are mixed in at random &mdash; any article could be scored.  When you submit a scored task, you will immediately get a feedback message, like this:
+        <div class="alert alert-success" style=""><button class="close">&times;</button>Nice work! You scored <span class="badge badge-success">45</span> on that task, making your average 41.5.</div>
+    </p>
+    
+    <h3>Scoring</h3>
+    <p>Scores for tasks are calculated by comparing your answers to previous answers by experts.  We don't think of answers as "right" or "wrong."  It's more of a "warmer/colder" thing.  Here's a scale for judging how well you're doing:</p>
+    <p><dl id="doc-metadata" class="dl-horizontal">
+        <dt>75+ pts</dt><dd>Great accuracy</dd>
+        <dt>50 pts</dt><dd>Good accuracy</dd>
+        <dt>25 pts</dt><dd>Fair accuracy</dd>
+        <dt>0 pts</dt><dd>Looks like you're just guessing</dd>
+        <dt>-25 pts</dt><dd>Uh oh.  Not so good.</dd>
+    </dl></p>
+
+    <h3>Total score</h3>
+    <p>Your total score is your average score (on scored tasks) times the total number of tasks you've finished (scored and unscored).  Your score depends on both quantity and quality, so the best strategy is to finish lots of tasks with consistently high accuracy.</p>
+    <div class="well">Total score = Average score × ( Tasks completed + Bonus credits )</div>
+
+    <h3>Bonus credits</h3>
+    <p>You also receive <strong>3 bonus credits for every 25 tasks</strong> you finish.  These credits are counted just like tasks completed.  They don't affect your average score, but they can boost your total score.</p>
+
+    <h3>Payment</h3>
+    <p>You will be paid a <strong>$2.00 bonus for every 1,000 points</strong> scored, rounded down to the nearest dollar.  Your bonus will be paid to your mturk account within a few minutes of quitting the game.</p>
+
+    <h3>FAQ</h3>
+
+    <h4>How much will I get paid?</h4>
+    <p>You will be paid $2.00 per 1,000 points, rounded down to the nearest dollar.  A score of 40 to 50 per task is about average, so you can expect to make around $.08 to $.10 per task.  Of course, it depends on the accuracy of your answers.</p>
+    
+    <h4>How much do most people make per hour?</h4>
+    <p>Most of our workers make about $X.00 per hour.  This is quite a bit more than most HITs on Mechanical Turk.  And you can do even better if you work faster and more accurately.</p>
+    
+    <h4>When do I get paid?</h4>
+    <p>When you quit, you will immediately be awarded a bonus for work completed. The conversion rate for these tasks is $2.00 per 1,000 points.</p>
+
+    <h4>Can I quit and come back?</h4>
+    <p>Yes.  We save your score, so if you come back to the same set of tasks later, you can pick up right where you left off.</p>
+
+    <h4>Do I get points for unscored tasks?</h4>
+    <p>Yes, every article you read affects your total score.  Even though unscored tasks don't affect your average score, they still add to your tally of tasks completed.</p>
+
+    <h4>Why is my score zero even though I've finished some tasks?</h4>
+    <p>You probably haven't done any scored tasks yet.  About 1 in X tasks is scored, so it's not unusual to get several rounds into the game without running into one. Your average score will be zero until you do at least one.</p>
+
+    <h4>How exactly are scores calculated?</h4>
+    <p>There's a lot of math.  Basically, we compare your answers to previous answers, and you get points depending on how closely you match the experts.  Since even the experts often disagree, we award lots of partial credit, and the formula gets pretty complicated.<!--If your answers are as good as expert coding, you will get about 50 points.  If they're even better than expert coding (this happens sometimes!) you can get even more.  If it looks like you're just guessing, your scores will average out around 0.--></p>
+    
+    <h4>What happens if I get a bad score on one of my tasks?</h4>
+    <p>It will hurt your average.  But don't worry too much about any one score.  Over time, your good and bad scores will average out to reflect the overall quality of your coding.</p>
+
+    <h4>What would happen if my total score were negative?</h4>
+    <p>Everyone would be very sad.  We don't award any bonuses for negative scores.  But if you read carefully and use your best judgement to answer the questions, there's no reason for this to happen.</p>
+
+  </div>
+  <div class="modal-footer">
+    <a data-dismiss="modal" class="btn btn-primary">Okay</a>
+  </div>
+</div>
+
+<div class="modal hide fade" id="task-stats-modal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Statistics</h3>
+  </div>
+  <div class="modal-body">
+    <!--  
+    <p><table style="margin:auto; text-align:center">
+        <tr>
+            <td>Total score</td>
+            <td> = </td>
+            <td>Avg. score</td>
+            <td> &times; ( </td>
+            <td>Tasks completed</td>
+            <td> + </td>
+            <td>Bonus credits</td>
+            <td> ) </td>
+        </tr>
+        <tr>
+            <td>{{game_session.game_stats.total_score}}</td>
+            <td> = </td>
+            <td>{{game_session.game_stats.avg_score|floatformat:1}}</td>
+            <td> &times; ( </td>
+            <td>{{game_session.game_stats.tasks_completed}}</td>
+            <td> + </td>
+            <td>{{game_session.game_stats.bonus_credits}}</td>
+            <td> ) </td>
+        </tr>
+    </table></p>
+    
+    <p style=""><dl id="doc-metadata" class="dl-horizontal" style="margin:auto">
+        <dt>Med time</dt><dd>{{game_session.game_stats.avg_score|floatformat:1}}</dd>
+        <dt>Dollars/1,000 pts</dt><dd>$2.00</dd>
+        <dt>Dollars/hour</dt><dd>$6.74</dd>
+        <dt></dt><dd>&nbsp;</dd>
+    </dl></p>
+    -->
+    <!--
+    <p><dl id="doc-metadata" class="dl-horizontal">
+        <dt>Tasks completed</dt><dd>{{game_session.game_stats.tasks_completed}}</dd>
+        <dt>Bonus credits</dt><dd>{{game_session.game_stats.bonus_credits}}</dd>
+        <dt></dt><dd>&nbsp;</dd>
+        <dt>Avg score</dt><dd>{{game_session.game_stats.avg_score|floatformat:1}}</dd>
+        <dt>Med time</dt><dd>{{game_session.game_stats.avg_score|floatformat:1}}</dd>
+        <dt>Dollars/1,000 pts</dt><dd>$2.00</dd>
+        <dt></dt><dd>&nbsp;</dd>
+        <dt>Dollars/hour</dt><dd>$6.74</dd>
+        <dt></dt><dd>&nbsp;</dd>
+    </dl></p>    
+    -->
+    <!--
+    <table style="margin:auto" class="table table-bordered">
+        <tr><td colspan="2" style="text-align:center"><h3>Game Stats</h3></td></tr>
+        <tr>
+            <td>
+                <p><dl id="doc-metadata" class="dl-horizontal">
+                    <dt>Total score</dt><dd>{{game_session.game_stats.total_score}}</dd>
+                    <dt>Avg score</dt><dd>{{game_session.game_stats.avg_score|floatformat:1}}</dd>
+                    <dt>Tasks completed</dt><dd>{{game_session.game_stats.tasks_completed}}</dd>
+                    <dt>Bonus credits</dt><dd>{{game_session.game_stats.bonus_credits}}</dd>
+                </dl></p>
+            </td>
+            <td>
+                <p><dl id="doc-metadata" class="dl-horizontal">
+                    <dt>Med time</dt><dd>{{game_session.game_stats.avg_score|floatformat:1}} sec</dd>
+                    <dt>Dollars/1,000 pts</dt><dd>$2.00</dd>
+                    <dt>Dollars/hour</dt><dd>$6.74</dd>
+                    <dt>Total dollars</dt><dd>$4.24</dd>
+                </dl></p>
+            </td>
+        </tr>
+    </table>
+    -->
+    <table style="margin:auto" class="table">
+        <tr>
+            <td>Total score</td><td id="modal-total-score"></td>
+            <td></td>
+            <td>Dollars/1,000 pts</td><td id="modal-exchange-rate"></td>
+<!--            <td>Med time</td><td>{{game_session.game_stats.avg_score|floatformat:1}} sec</td> -->
+        </tr>
+            <td>Avg score</td><td id="modal-avg-score"></td>
+            <td></td>
+            <td>Next bonus</td><td id="modal-next-bonus"></td>
+        <tr>
+            <td>Tasks completed</td><td id="modal-tasks-completed"></td>
+            <td></td>
+            <td>Bonus size</td><td id="modal-bonus-size"></td>
+<!--            <td>Dollars/hour</td><td>$6.74</td> -->
+        </tr>
+        <tr>
+            <td>Bonus credits</td><td id="modal-bonus-credits"></td>
+            <td></td>
+            <td>Tasks remaining</td><td id="modal-tasks-remaining"></td>
+        </tr>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-primary" data-dismiss="modal">Okay</a>
+  </div>
+</div>
+
+<div class="modal hide fade" id="task-quit-modal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Are you sure you want to quit?</h3>
+  </div>
+  <div class="modal-body">
+    <p>Your next bonus of <strong>+5 credits</strong> is due in <strong>17 rounds</strong>.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-primary" data-dismiss="modal">&laquo; Keep playing</a>
+    <a href="#" class="btn btn-primary" id="quit-now">Quit now</a>
+  </div>
+</div>

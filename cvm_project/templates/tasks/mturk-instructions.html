@@ -1,0 +1,105 @@
+{% extends "base/single-column.html" %}
+{% load cvm_app_tags %}
+
+{% block start_scripts %}
+<script type="text/javascript">
+$(function(){});
+</script>
+{% endblock %}
+
+{% block menu %}{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container">
+    <img src="{{ STATIC_URL }}img/cvm-logo.gif" style="float:left; position:absolute; height:50px;">
+<!--
+    <ul class="breadcrumb">
+      <li id="score-bar" style="margin-left:20px">
+        Total score: <span id="breadcrumb-total-score">3726</span>
+        <span class="divider">=</span>
+        <span id="breadcrumb-avg-score">54.8</span> avg. score
+        <span class="divider">&times; ( </span>
+        <span id="breadcrumb-tasks-completed">63</span> tasks completed
+        <span class="divider">+</span>
+        <span id="breadcrumb-avg-score">5</span> bonus credits
+        <span class="divider"> )</span>
+      </li>
+    
+      <li id="breadcrumb-controls" style="float:right">
+          <a href="#" id="instructions-btn">Instructions</a>
+          <span class="divider"> | </span>
+          <a href="#" id="stats-btn">Statistics</a>
+          <span class="divider"> | </span>
+          <a href="#" id="quit-btn" class="auto">Quit &raquo;</a>
+      </li>
+    </ul>
+-->
+</div>
+{% endblock %}
+
+{% block main_column %}
+<h2>Instructions</h2>
+
+<h3>How it works</h3>
+<p><ol>
+    <li>Read the article on the left</li>
+    <li>Answer the questions on the right</li>
+    <li>Score points when your answers match the experts!</li>
+</ol></p>
+
+<h3>Scored tasks</h3>
+<p>For some tasks, the questions have been answered previously by experts.  These <strong>scored tasks</strong> are mixed in at random &mdash; any article could be scored.  When you submit a scored task, you will immediately get a feedback message, like this:
+    <div class="alert alert-success" style=""><button class="close">&times;</button>Nice work! You scored <span class="badge badge-success">45</span> on that task, making your average 41.5.</div>
+</p>
+
+<h3>Scoring</h3>
+<p>Scores for tasks are calculated by comparing your answers to previous answers by experts.  We don't think of answers as "right" or "wrong."  It's more of a "warmer/colder" thing.  Here's a scale for judging how well you're doing:</p>
+<p><dl id="doc-metadata" class="dl-horizontal">
+    <dt>75+ pts</dt><dd>Great accuracy</dd>
+    <dt>50 pts</dt><dd>Good accuracy</dd>
+    <dt>25 pts</dt><dd>Fair accuracy</dd>
+    <dt>0 pts</dt><dd>Looks like you're just guessing</dd>
+    <dt>-25 pts</dt><dd>Uh oh.  Not so good.</dd>
+</dl></p>
+
+<h3>Total score</h3>
+<p>Your total score is your average score (on scored tasks) times the total number of tasks you've finished (scored and unscored).  Your score depends on both quantity and quality, so the best strategy is to finish lots of tasks with consistently high accuracy.</p>
+<div class="well">Total score = Average score × ( Tasks completed + Bonus credits )</div>
+
+<h3>Bonus credits</h3>
+<p>You also receive <strong>3 bonus credits for every 25 tasks</strong> you finish.  These credits are counted just like tasks completed.  They don't affect your average score, but they can boost your total score.</p>
+
+<h3>Payment</h3>
+<p>You will be paid a <strong>$2.00 bonus for every 1,000 points</strong> scored, rounded down to the nearest dollar.  Your bonus will be paid to your mturk account within a few minutes of quitting the game.</p>
+
+<h3>FAQ</h3>
+
+<h4>How much will I get paid?</h4>
+<p>You will be paid $2.00 per 1,000 points, rounded down to the nearest dollar.  A score of 40 to 50 per task is about average, so you can expect to make around $.08 to $.10 per task.  Of course, it depends on the accuracy of your answers.</p>
+
+<h4>How much do most people make per hour?</h4>
+<p>Most of our workers make about $X.00 per hour.  This is quite a bit more than most HITs on Mechanical Turk.  And you can do even better if you work faster and more accurately.</p>
+
+<h4>When do I get paid?</h4>
+<p>When you quit, you will immediately be awarded a bonus for work completed. The conversion rate for these tasks is $2.00 per 1,000 points.</p>
+
+<h4>Can I quit and come back?</h4>
+<p>Yes.  We save your score, so if you come back to the same set of tasks later, you can pick up right where you left off.</p>
+
+<h4>Do I get points for unscored tasks?</h4>
+<p>Yes, every article you read affects your total score.  Even though unscored tasks don't affect your average score, they still add to your tally of tasks completed.</p>
+
+<h4>Why is my score zero even though I've finished some tasks?</h4>
+<p>You probably haven't done any scored tasks yet.  About 1 in X tasks is scored, so it's not unusual to get several rounds into the game without running into one. Your average score will be zero until you do at least one.</p>
+
+<h4>How exactly are scores calculated?</h4>
+<p>There's a lot of math.  Basically, we compare your answers to previous answers, and you get points depending on how closely you match the experts.  Since even the experts often disagree, we award lots of partial credit, and the formula gets pretty complicated.<!--If your answers are as good as expert coding, you will get about 50 points.  If they're even better than expert coding (this happens sometimes!) you can get even more.  If it looks like you're just guessing, your scores will average out around 0.--></p>
+
+<h4>What happens if I get a bad score on one of my tasks?</h4>
+<p>It will hurt your average.  But don't worry too much about any one score.  Over time, your good and bad scores will average out to reflect the overall quality of your coding.</p>
+
+<h4>What would happen if my total score were negative?</h4>
+<p>Everyone would be very sad.  We don't award any bonuses for negative scores.  But if you read carefully and use your best judgement to answer the questions, there's no reason for this to happen.</p>
+{% endblock %}
+
+{% block footer %}{% endblock %}

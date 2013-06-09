@@ -1,0 +1,101 @@
+{% extends "base/base.html" %}
+
+{% block start_scripts %}
+<script type="text/javascript">
+$(function(){});
+</script>{% endblock %}
+
+{% block menu %}{% include "public/menu.htm" %}{% endblock %}
+{% block overlays %}{% include "public/overlays.htm" %}{% endblock %}
+
+{% block main_container %}
+<div class="row">
+	<div class="span7 hero-unit">
+		<div class="corner-left">
+			<img src="{{ STATIC_URL }}img/random/noun_project_289.png"><br/>
+			<span class="label yes-do-this">Good idea!</span>
+		</div>
+		<h2>Definitions</h2>
+		<p>Civility has many pieces.  To measure them as accurately as possible, we separate them into <strong>codebooks</strong>. Each codebook provides clear standards for evaluation, and is rigorously tested for accuracy and reliability.</p>
+	</div>
+	<div class="span3">
+		<h3>Quick links</h3>
+		<ul id="quick-links"></ul>
+	</div>
+</div>
+
+<div id="mini-blocks" class="row">
+{% for c in codebooks %}
+	<div class="cvm-masonry well">
+		<h3>{{ c.profile.name }}</h3>
+		<p>{{ c.profile.description }}...</p>
+        <p>
+			<a class="btn">More info</a>
+			<a class="btn">See examples</a>
+			<a class="btn btn-primary">Try it out!</a>
+		</p>
+	</div>
+{% endfor %}
+<!--
+	<div class="cvm-masonry well">
+		<h3>Public import</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Divisiveness</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Objective tone</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Respect for others</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Facts, sources, and evidence</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Infotainment</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Appeals to fear</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Appeals to humor</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Appeals to anger</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Violent rhetoric</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Emotional reactions</h3>
+		<p>...</p>
+	</div>
+-->
+</div>
+
+{% endblock %}
+
+{% block end_scripts %}{% include "public/end-scripts.htm" %}{% endblock %}
+
+

@@ -1,0 +1,13 @@
+{% extends "base/single-column.html" %}
+{% load cvm_app_tags %}
+
+{% block start_scripts %}{% endblock %}
+
+{% block menu %}{% include "tasks/menu.htm" %}{% endblock %}
+
+{% block main_column %}
+<title> This is the no-tasks-left page </title>
+
+<h3>Sorry, there is no tasks left in all batches!</h3>
+   
+{% endblock %}

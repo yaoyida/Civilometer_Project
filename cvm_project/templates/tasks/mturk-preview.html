@@ -1,0 +1,133 @@
+{% extends "base/document-control.html" %}
+{% load cvm_app_tags %}
+
+{% block start_scripts %}
+<script type="text/javascript">
+$(function(){
+    $("#task-intro-modal").modal({ show:true });
+//    $("#task-instructions-modal").modal({ show:true });
+    
+    $("#instructions-btn").click(function(){
+        $("#task-instructions-modal").modal({show:true});
+    });
+    
+    $("#stats-btn").click(function(){
+        $("#task-stats-modal").modal({show:true});
+    });
+
+    $("#quit-btn").click(function(){
+        $("#task-quit-modal").modal({show:true});
+    });
+
+    $("#next-btn").hide();
+    $("#submit-btn").addClass("disabled");
+
+    $("#score-bar")
+        .css('cursor','pointer')
+        .popover({
+           title : '1. Score bar',
+           content : 'The score bar automatically keeps a running tally of your tasks.  The more tasks you finish and the greater your accuracy, the higher your total score will go!',
+           placement : 'bottom'
+        });
+
+    $("#doc-box")
+        .css('cursor','pointer')
+        .popover({
+           title : '2. Document',
+           content : 'This box holds the document for this task.  Most documents are newspaper articles, blog posts, etc.  In each task, you will be asked to answer the questions on the right about a different document.',
+           placement : 'right'
+        });
+
+    $("#control-box")
+        .css('cursor','pointer')
+        .popover({
+           title : '3. Codebook',
+           content : 'This box holds the codebook for this task.  You will be asked to answer these same questions for each document.<br/><br/>Your score depends on the accuracy of your answeers, so use your best judgment!',
+           placement : 'left'
+        });    
+
+    $("#breadcrumb-controls")
+        .css('cursor','pointer')
+        .popover({
+           title : '4. Controls',
+           content : 'Controls for the game are in the top right.',
+           placement : 'bottom'
+        });
+
+});
+</script>
+{% endblock %}
+
+{% block menu %}{% endblock %}
+
+{% block breadcrumbs %}
+<div class="alert" style="z-index:1000; text-align:center;">
+    You are currently in preview mode.  Please click "Accept this HIT" to begin.
+</div>
+
+<div class="container">
+    <img src="{{ STATIC_URL }}img/cvm-logo.gif" style="float:left; position:absolute; height:50px;">
+    <ul class="breadcrumb">
+      <li id="score-bar" style="margin-left:20px">
+        Total score: <span id="breadcrumb-total-score">3726</span>
+        <span class="divider">=</span>
+        <span id="breadcrumb-avg-score">54.8</span> avg. score
+        <span class="divider">&times; ( </span>
+        <span id="breadcrumb-tasks-completed">63</span> tasks completed
+        <span class="divider">+</span>
+        <span id="breadcrumb-avg-score">5</span> bonus credits
+        <span class="divider"> )</span>
+      </li>
+    
+      <li id="breadcrumb-controls" style="float:right">
+          <a href="#" id="instructions-btn">Instructions</a>
+          <span class="divider"> | </span>
+          <a href="#" id="stats-btn">Statistics</a>
+          <span class="divider"> | </span>
+          <a href="#" id="quit-btn" class="auto">Quit &raquo;</a>
+      </li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block overlays %}
+{% include "tasks/overlays.html" %}
+<div class="modal hide fade" id="task-intro-modal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="task-intro-modal">×</button>
+    <h3>These HITs are set up as a game.</h3>
+  </div>
+  <div class="modal-body">   
+    <p>Our goal is to provide you with quick feedback and payment, and make sure that all answers are accurate.  For more information, please check out our <a href="/tasks/mturk-instructions/">detailed instructions and FAQ</a>.</p>
+    
+    <p><ul>
+            <li>Read blog posts and news articles and accurately answer questions about them.</li>
+            <li>Score points by matching experts' answers.</li>
+            <li>You will be paid a <strong>$2.00 bonus for every 1,000 points</strong> scored.</li>
+    </ul></p>    
+  </div>
+  <div class="modal-footer">
+    <a data-dismiss="modal" class="btn btn-primary">Okay</a>
+  </div>
+</div>
+{% endblock %}
+
+{% block document %}
+<div id="doc-box" class="well">
+    {{ document.content }}
+</div>
+{% endblock %}
+
+{% block control %}
+<div class="row-fluid">
+    <div id="codebook" class="span12 well"><form id="codebook-form">
+        {% include "base/codebook-template.html" %}
+        <a id="submit-btn" class="btn btn-primary rightside">Submit</a>
+        <a id="next-btn" class="btn btn-primary rightside">Next &raquo;</a>
+    </form></div>
+
+    <div id="messages" class="row-fluid"></div>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

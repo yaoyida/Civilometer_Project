@@ -1,0 +1,24 @@
+{
+	"_id" : {
+        "$oid": "50002c1a33679d0c5f9be6a7",
+    },
+	"profile" : {
+		"created_at" : ISODate("2012-07-13T09:09:30.463Z"),
+		"description" : "A small sample of documents from the Lexis News Sample.",
+		"name" : "News sample A",
+		"size" : 20
+	},
+	"documents" : [
+		{
+			"content" : "<p class=\"headline\">Long life offers many giving opportunities</p><p class=\"date\">February 23, 2009 Monday  METRO FINAL EDITION\n</p><p>My sweet neighbor Dawn died last year.</p>\n<p>When we moved to our street fifteen years ago, Dawn was in her 80s. A porcelain sparrow of a woman, she mowed her own lawn and then raked up the clippings. When leaves fell, Dawn climbed her roof to sweep it clean. She was scrupulous about rooting out crabgrass and dandelions, her favored tool a kitchen fork. Her outfit for doing battle with garden entropy was a crisply ironed flowered blouse and a snappy pair of Bermuda shorts. Beneath the shorts, she wore hose.</p>\n<p>The way neighbors do, we'd exchanged phone numbers and promised to watch out for each other. As the years unfolded, I witnessed the spectacular tidiness of the interior of Dawn's home, as well. She'd telephone fairly regularly: The batteries in her TV remote needed replacing, or she'd somehow entwined the electrical cord of her vintage Sunbeam Mixmaster into the beaters, or she'd seen a rat the size of a dachshund scaling her back fence -- and needed me to investigate. My summer vegetables travelled next door via basket; it would return cradling a bakery pie or a sack of triple-A batteries. </p>\n<p>Her kitchen and living room remained, I'm certain, unchanged since 1951, when Dawn and her husband had designed their home in a postwar development smack-dab in the middle of a walnut orchard. He died long ago. Dawn, childless, lived on, meticulously tending her orderly corner of the cosmos until -- you know this story -- her nephew's children concluded she could no longer care for herself.</p>\n<p>I can't remember exactly when walking unassisted became a chore for Dawn. Some years ago, I began moving her daily newspaper from wherever our paperboy had lobbed it and leaning it against her front door. One summer Saturday morning, my own impending mortality announcing itself, no doubt, I forgot my duty.</p>\n<p>About midday, an anxious stranger knocked at my front door. My neighbor appeared to have fallen in her yard, so the Good Samaritan had phoned 911. Did I know the little old lady? Was there anybody I could call on her behalf? Would I stay with her until the police came? Seated imperiously on her front stoop, Dawn answered my questions.</p>\n<p>\"Of course I was crawling across the yard,\" she snapped at me. \"I had to get my paper.\" I sat down beside her and listened. I'd never known Dawn to be cranky or complaining. House-proud and slightly aloof, yes. Rude or accusatory, never. Everybody was making a big to-do out of nothing, she crabbed. Unnecessary fluster.</p>\n<p>The young policeman summoned by the 911 call pulled up to the curb. Standing before us in the ready position, he announced, \"I got a report that you were crawling around in your yard.\" Dawn blinked. She mustered her words.</p>\n<p>\"See all this?\" She waved her skinny arm. \"All this is mine. If I want to crawl around out here, I can. You can't stop me.\" She paused.</p>\n<p>The policeman and I looked at each other.</p>\n<p>\"If you don't like it, you can kiss my ass,\" she said.</p>\n<p>For the last three months, distant relatives have dismantled Dawn's nest piece by beloved piece. Overseeing her cherished furniture being hauled away in pickup trucks, her neatly pressed clothes dragged out to the curb in garbage bags, is a neighborly obligation she did not ask of me. I like to think, if she'd had the time, Dawn would have preferred handling the disposition of her possessions by herself, finding new owners for the precious objects that bound her world for so long.</p>\n<p>Dawn was 100 years old when she died. If I am lucky enough to live that long, I plan to have every material scrap I own distributed well before the century mark.</p>\n<p>I'm starting now.</p>\n<p>Anna Tuttle Villegas is a writer and teacher. She lives in Lodi.</p>",
+			"metadata" : {
+				"index" : "945",
+				"source_name" : "Lexis news sample",
+				"source" : "Sacramento_Bee_Editorials.xml",
+				"headline" : "Long life offers many giving opportunities",
+				"date" : "February 23, 2009 Monday  METRO FINAL EDITION\n",
+				"source_id" : "50002bf133679d0c5f9be6a6"
+			}
+		}]
+}
+

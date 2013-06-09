@@ -1,0 +1,56 @@
+{% extends "base/base.html" %}
+
+{% block start_scripts %}
+<script type="text/javascript">
+$(function(){});
+</script>
+{% endblock %}
+
+{% block menu %}{% include "public/menu.htm" %}{% endblock %}
+{% block overlays %}{% include "public/overlays.htm" %}{% endblock %}
+
+{% block main_container %}
+<div class="row">
+	<div class="span7 hero-unit">
+		<div class="corner-left">
+			<img src="{{ STATIC_URL }}img/random/noun_project_2172.png"><br/>
+			<span class="label yes-do-this">Good idea!</span>
+		</div>
+		<h2>Get involved</h2>
+		<p>The civilometer is a crowdsourced community.  We aggregate many small actions and judgements to create an informative public data product.</p>
+		<p>The place we need to most help is here: crowdsourced judgements of civility in real-time news feeds.</p>
+        <a class="btn btn-large btn-primary" href="/tasks/">Go to tasks</a>
+	</div>
+	<div class="span3">
+		<h3>Quick links</h3>
+		<ul id="quick-links">
+		</ul>
+	</div>
+</div>
+
+<div id="mini-blocks" class="row">
+	<div class="cvm-masonry well">
+		<h3>Rate civility</h3>
+		<p><a href="/tasks/choose-task">Choose a task</a></p>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Suggest a data source</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Suggest a codebook</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Suggest a site improvement</h3>
+		<p>...</p>
+	</div>
+</div>
+{% endblock %}
+
+{% block end_scripts %}{% include "public/end-scripts.htm" %}{% endblock %}
+

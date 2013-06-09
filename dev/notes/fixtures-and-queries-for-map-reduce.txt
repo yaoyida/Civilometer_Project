@@ -1,0 +1,107 @@
+cd cvm_project/
+python manage.py loadfixtures test-2
+
+>>> Here's the MongoDB command line input
+
+var map = function() {
+  emit( this.metadata.sentences % 5, {score : this.civility_labels.divisiveness.score} )
+};
+
+var reduce = function(key, values) {
+   var sum = 0;
+   var count = 0;
+   values.forEach(function(doc) {
+     sum += doc.score;
+     count += 1;
+   });
+   return {avg: sum/count, n: count};
+};
+
+
+db.cvm_document.mapReduce(map, reduce, {out: {inline:1}})
+
+>>> Here's the output:
+
+{
+	"results" : [
+		{
+			"_id" : 0,
+			"value" : {
+				"avg" : 4.285714285714286,
+				"n" : 21
+			}
+		},
+		{
+			"_id" : 1,
+			"value" : {
+				"avg" : 5.111111111111111,
+				"n" : 18
+			}
+		},
+		{
+			"_id" : 2,
+			"value" : {
+				"avg" : 4.4,
+				"n" : 20
+			}
+		},
+		{
+			"_id" : 3,
+			"value" : {
+				"avg" : 4.648648648648648,
+				"n" : 37
+			}
+		},
+		{
+			"_id" : 4,
+			"value" : {
+				"avg" : 4.25,
+				"n" : 24
+			}
+		}
+	],
+	"timeMillis" : 11,
+	"counts" : {
+		"input" : 120,
+		"emit" : 120,
+		"reduce" : 5,
+		"output" : 5
+	},
+	"ok" : 1,
+}
+
+
+>>> Here's what our will time series objects will likely look like.
+
+{
+    "results" : [
+        {
+            "_id" : 0,
+            "value" : {
+                "date" : "2008-01-22T23:16:05"
+                "Romney" : 4.28571428571428,
+                "Obama" : 2.85714285714286,                
+                "n" : 21
+            }
+        },
+        {
+            "_id" : 1,
+            "value" : {
+                date : "2005-01-11T18:34:28"
+                "Romney" : 5.111111111111111,
+                "Obama" : 1.555555555555555,
+                "n" : 18
+            }
+        },
+        {
+            "_id" : 2,
+            "value" : {
+                "date" : "2004-08-02T21:31:24"
+                "Romney" : 4.4,
+                "Obama" : 8.5714285714286,
+                "n" : 20
+            }
+        },
+        ...
+    ]
+}

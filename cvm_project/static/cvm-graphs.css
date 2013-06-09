@@ -1,0 +1,45 @@
+svg .dotplot-error-bar{
+	stroke : black;
+	stroke-width : 4;
+	stroke-linecap : round;
+}
+
+svg .dotplot-dot{
+	stroke : black;
+	stroke-width : 4;
+	fill : white;
+}
+
+svg .lineplot-line {
+	stroke: #d74614;
+	stroke-width: 4;
+	fill: none;
+	stroke-linecap : round;
+}
+
+svg .lineplot-dot {
+	stroke : #d74614;
+	stroke-width: 4;
+	fill: white;
+}
+
+
+/* Border grids */
+svg .rules line, .rules path {
+  shape-rendering: crispEdges;
+  stroke: #000;
+}
+
+svg .rules .tick {
+}
+svg .rules .minor {
+  stroke: #ccc;
+}
+svg .rules .domain {
+  fill: none;
+}
+
+/*Tick lines*/
+svg .grid .tick {
+  stroke: #ccc;
+}

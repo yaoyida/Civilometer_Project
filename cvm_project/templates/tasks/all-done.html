@@ -1,0 +1,20 @@
+{% extends "base/single-column.html" %}
+{% load cvm_app_tags %}
+
+{% block start_scripts %}{% endblock %}
+
+{% block menu %}{% include "tasks/menu.htm" %}{% endblock %}
+
+{% block main_column %}
+<title> This is the all-done page </title>
+
+<h3>Congratulations! Here are your game statistics:</h3>
+<p><dl id="doc-metadata" class="dl-horizontal">
+    <dt>Total score</dt><dd>{{game_session.game_stats.total_score}}</dd>
+    <dt>Average score</dt><dd>{{game_session.game_stats.avg_score}}</dd>
+    <dt>Tasks completed</dt><dd>{{game_session.game_stats.tasks_completed}}</dd>
+</dl></p>    
+<hr/>
+<a href="/tasks/game-session/{{ game_session|mongo_id }}" class="btn btn-large btn-primary">&laquo; Keep playing</a>
+<a href="#" class="btn btn-primary">I'm done, pay me now!</a>
+{% endblock %}

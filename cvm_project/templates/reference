@@ -1,0 +1,40 @@
+{% block document %}
+<!-- --- Codebook --- -->
+<!--
+<div id="codebook" data-bind="template: { name: 'question-template', foreach: questions }" tb-codebook-mode="editor"></div>
+-->
+<div id="codebook">
+
+{% for question in codebook.questions %}
+
+    {% if question.question_type == "Static text" %}<br/>
+        <div class="headerText">{{question.params.header_text|safe}}</div>
+    {% endif %}
+
+    {% if question.question_type == "Two-way scale" %}
+        <div class="headerText">{{question.params.header_text|safe}}</div>
+        <table class="matrixQuestion">
+            <tr>
+                <td></td>
+                {% for variable in question.params.answer_array %}<td>{{variable|safe}}</td>{% endfor %}
+                <td></td>
+            </tr>
+            <tr class="questionMarkupAnchor">
+                <td class="leftCol">{{question.params.left_statement|safe}}</td>
+                {% for variable in question.params.answer_array %}<td class="clickable">
+                    <div class="shim-graph"></div>
+                    <input type="radio" name="Q{{forloop.parentloop.counter}}{% if question.var_name %}_{{question.var_name}}{% endif %}" value="{{forloop.counter}}"></input>
+                </td>{% endfor %}
+                <td class="rightCol">{{question.params.right_statement|safe}}</td>
+            </tr>
+        </table>
+    {% endif %}
+
+    {{question.question_type}}
+
+
+{% endfor %}
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+=== Evaluating reliability ===
+
+Need to be able to determine the extent of overlap
+gold_codes should be included in documents:
+    {
+        index: int
+        labels: [{},{},...]
+        gold_codes: [{...},{...},...]
+    }
+
+
+=== Constructing scales ===
+This will probably be ad-hoc....?
+
+=== Training classifiers ===
+
+def train_classifier( classifier_profile )
+def apply_classifier( classifier_id, collection )
+
+classifier : {
+    profile : {
+        created_at : ISODate,
+        featurizers : [],
+        training_algorithm : [],
+        algorithm_parameters : {},
+        include_batch_as_feature : Boolean,
+        include_collection_as_feature : Boolean,
+    },
+    weights : {},
+    reports : {
+        accuracy
+        alpha
+    }
+}
+
+* Applying a classifier to a collection creates a new batch
+
+==================================
+
+
+How should links *among* collections work?
+
+We need these anywhere we plan to evaluate reliability on a subsample:
+    1. Task page
+    2. Apply classifier

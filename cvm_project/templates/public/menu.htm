@@ -1,0 +1,39 @@
+<div class="navbar-inner">
+	<div class="container">
+	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </a>
+
+	  <img src="{{ STATIC_URL }}img/cvm-logo.gif" style="float:left; position:absolute; height:50px;">
+	  <a class="brand" href="/">&nbsp;&nbsp;&nbsp;&nbsp;civilometer.com</a>
+
+	  <!-- These menu options are collapsed for small screens -->
+	  <div class="nav-collapse">
+		<ul class="nav">
+		  <li><a href="/how-it-works/">How it works</a></li>
+		  <li><a href="/play-with-data/">Play with data</a></li>
+<!--		  <li><a href="/get-involved/">Get involved</a></li> -->
+		  <li><a href="/gallery/">Gallery</a></li>
+          <li><a href="/definitions/">Definitions</a></li>
+		</ul>
+	  </div><!--/.nav-collapse -->
+
+      <!-- These menu options are *not* collapsed for small screens -->
+	  <ul class="nav pull-right">
+        {% if user.is_superuser %}
+            <li><a href="/admin/">Site administration</a></li>
+		{% else %}
+            <li><a id="please-help-btn" data-toggle="modal" href="#please-help-modal">Help us get funding!</a></li>
+        {% endif %}
+		{% if user.is_authenticated %}
+			<li><a href="/sign-out/">Sign out {{ user.username }}</a></li>
+		{% else %}
+			<li><a href="#" id="sign-in-btn">Sign in</a></li>
+		{% endif %}
+	  </ul>
+
+	</div>
+</div>
+

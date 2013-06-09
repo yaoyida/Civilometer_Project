@@ -1,0 +1,78 @@
+{% extends "base/base.html" %}
+
+{% block start_scripts %}
+<script type="text/javascript">
+$(function(){});
+</script>
+{% endblock %}
+
+{% block menu %}{% include "public/menu.htm" %}{% endblock %}
+{% block overlays %}{% include "public/overlays.htm" %}{% endblock %}
+
+{% block main_container %}
+<div class="row">
+	<div class="span7 hero-unit">
+		<div class="corner-left">
+			<img src="{{ STATIC_URL }}img/random/noun_project_815.png"><br/>
+			<span class="label yes-do-this">Good idea!</span>
+		</div>
+		<h2>Play with data</h2>
+		<p>A full suite of visualization tools lets you slice, dice, and explore all our data.  By making data interactive, we help you dig deep and find the stories that matter.</p>
+		<p style="margin-left:140px;">We also make data available for download, and expose our civility algorithms through a public API.</p>
+	</div>
+	<div class="span3">
+		<h3>Quick links</h3>
+		<ul id="quick-links">
+		</ul>
+	</div>
+</div>
+
+<div id="mini-blocks" class="row">
+	<div class="cvm-masonry well">
+		<img src="{{ STATIC_URL }}img/random/noun_project_2823.png" class="flavor-pic">
+		<h3>Explore trends over time</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<img src="{{ STATIC_URL }}img/random/noun_project_814.png" class="flavor-pic">
+		<h3>Draw comparisons</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<img src="{{ STATIC_URL }}img/random/noun_project_322.png" class="flavor-pic">
+		<h3>Generate word clouds</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<img src="{{ STATIC_URL }}img/random/noun_project_804.png" class="flavor-pic">
+		<h3>Test our algorithms</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Explore reliability</h3>
+		<p>Any measurement is only as good as it is reliable.  We keep ourselves honest by letting the public inspect the reliability of everything we do.</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Units of analysis</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Download data</h3>
+		<p>Our data is your data.  We share everything we've got to encourage further research and data journalism.</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>API</h3>
+		<p>We provide an open API to share our automated civility measurement tools. API access is available to community members who share civility-related content and data of their own.  This system aligns incentives to constantly improve the scope and quality of our data on political civility.</p>
+	</div>
+</div>
+{% endblock %}
+
+{% block end_scripts %}{% include "public/end-scripts.htm" %}{% endblock %}
+

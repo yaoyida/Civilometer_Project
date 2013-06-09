@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+
+{% block main_container %}
+<div class="row">
+  <div class="{% block doc_classes %}span8{% endblock %}">
+    {% block document %}
+    <div id="doc-box" class="well">
+    </div>
+    {% endblock %}
+  </div>
+  <div id="control-box" class="{% block control_classes %}span4{% endblock %}">
+    {% block control %}
+    --- Control ---
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}

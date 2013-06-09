@@ -1,0 +1,227 @@
+===============================================================================
+=== Task pages ===
+===============================================================================
+
+=== Sequence ===
+
+A: From user page:
+    1. User clicks "Play the civility game" (or similar)
+    2. "Choose task" menu page loads
+    3. User selects task
+    4. Triggers AJAX: /tasks/ajax/create-game-session/
+        Create the new game session, store user info, etc
+    5. On successful return, the page redirects to tasks/[game_session_id]
+
+B: From mturk:
+    1. ExternalQuestion points to /tasks/get-mturk-game-session
+    2. If not assignmentId, redirect to tasks/dummy-page
+    3. If yes assignmentId, create or retrieve game_session and redirect to /tasks/game-session/[gs_id]
+
+C: From an external widget
+    ???
+    
+On the tasks page (/tasks/game-session/[gs_id]/):
+    1. Load and render page in django (cvm-user-task.html OR mturk-user-task.html OR anon-user-task.html)
+    2. Load current_task via AJAX (/tasks/ajax/get-task/)
+    3. User enters and submits label data
+    4. Record task result, return previous labels, and next document via AJAX (/tasks/ajax/submit-task/)
+    5. User gets their score and views feedback (e.g. previous labels)
+    6. User clicks to advance to next task
+
+
+When finished    
+    6. User clicks "Okay, I'm done"
+    7. Goes to "/all-done/" page
+    
+=== New Sequence ===
+
+A: From user page:
+    1. User clicks "Go to tasks" button in /civilometer/get-involved page
+    2. "Choose task" menu page loads (/civilometer/tasks/choose-task)
+    3. User selects a batch to begin task
+    4. Triggers AJAX: /tasks/ajax/create-game-session/
+        Create the new game session, store user info, etc
+        Needs to figure out: same user, same batch, do we need to retrieve the old game session or create a new one?
+    5. On successful return, the page redirects to tasks/game-session/[game_session_id]
+
+B: From mturk:
+    1. ExternalQuestion points to /tasks/mturk page
+    2. If not assignmentId, redirect to tasks/mturk-preview page
+    3. If yes assignmentId, create or retrieve game_session and redirect to /tasks/mturk-user-task page
+
+C: From an external widget
+    ???
+    
+On the tasks page (/tasks/game-session/[gs_id]/ and /tasks/mturk-user-task):
+    1. Load and render page in django (cvm-user-task.html OR mturk-user-task.html OR anon-user-task.html)
+    2. Load current_task via AJAX (/tasks/ajax/get-first-task/) (No matter how many times users refresh the page, it will give the same task)
+    3. User enters and submits label data
+    4. Record task result, return previous labels, and next document via AJAX (/tasks/ajax/submit-task/ and /tasks/ajax/get-next-task)
+    5. User gets their score and views feedback (e.g. previous labels)
+    6. Other user options:
+        6.a. User can use the "Instructions" button to view the instruction (tasks/mturk-instructions)
+        6.b. User can use the "Statistics" button to view their game statistics
+        6.c. User can use the "Quit" button to quit (triggered a modal)
+            6.c.1 User can choose "Keep playing" to be back to /tasks/mturk-user-task page
+            6.c.2 User can choose "Quit now" to go to payment (not done yet?)
+    
+    Notice: When there is no tasks left at all, go to /tasks/no-tasks-left page
+            
+When finished    
+    see 6.c 
+    
+=== URLs ===
+
+tasks/choose-task
+tasks/game-session/(*.?)         -   game_session_id
+tasks/static-page
+tasks/mturk
+
+tasks/ajax/create-game-session/
+tasks/ajax/get-first-task/
+tasks/ajax/submit-task/
+
+
+=== Questions ===
+
+How are tasks on the select task page populated?
+    Problem: variable-length coding sessions.  Unlike TB, we can't assign coder X to do Y tasks and assume they'll all be completed.
+    Solution: tasks are assigned one by one at random.
+        Problem: Makes client-side caching impossible.
+
+How to ensure that coders are never assigned the same document more than once?
+    Hash assignments based on some kind of identifying information about coders, then use the hash to enforce "lanes".
+    The has variable needs to endure across user sessions...  Not time or something random.
+
+What is the distribution of user screen sizes in mturk?
+    
+Which flow option should we use?
+    1. Single screen, within mturk site
+    2. Mturk site opens external window
+        *** Probably this one.
+            More flexible with screen sizes.
+            May require extra jquery with mturk...
+                But not really, if we're already creating a cvm_game_session collection
+
+How will score be computed?
+    Using krippendorff's alpha....?
+    Desiderata:
+        Expected value of guessing = 0
+        As transparent as possible
+        Perfect score = 100 ?
+
+=== About Mturk ===
+
+Overview
+    http://en.wikipedia.org/wiki/Amazon_Mechanical_Turk
+    http://mturk.amazon.com
+
+externalQuestions:
+    http://docs.amazonwebservices.com/AWSMechTurk/2008-02-14/AWSMechanicalTurkRequester/ApiReference_ExternalQuestionArticle.html
+    http://aws.amazon.com/code/555
+    http://awsmedia.s3.amazonaws.com/catalog/attachments/examplejavascriptexternalquestion.html
+    http://stackoverflow.com/questions/10769152/running-mturk-hits-on-external-website
+
+Studies on mturk demographics
+    http://dl.acm.org/citation.cfm?id=1753873
+    http://papers.ssrn.com/sol3/papers.cfm?abstract_id=1585030    
+    
+    http://www.slideshare.net/Cloud/sa1-how-to-use-mechanical-turk-for-behavioral-research
+
+Applications built on top of the mturk "operating system":
+
+    PsiTurk
+        https://github.com/johnmcdonnell/psiTurk
+
+    turkit
+    crowdFlower
+    CastingWords
+
+
+mturk user groups
+    turkernation
+    turkopticon
+
+=== API spec for /tasks/ajax/create-game-session/ ===
+
+Output json: {
+    status : String - "success" or "failed"
+    msg : String - Message shown to the user on *failure*
+    game_session_id : ObjectId - the index of the game session,
+}
+
+=== API spec for /tasks/ajax/get-first-task/ ===
+
+Output json: {
+    document: {
+        content: ,
+        index: ,
+    }
+}
+
+=== API spec for /tasks/ajax/submit-task/ ===
+
+Input json: {
+    game_session_id : ObjectId - the index of the game session,
+    doc_index : int - the index of the document,
+    labels : {}
+}
+
+Output json: {
+    status:  String - "success" or "failed"
+    msg: "",
+    
+    codebook_markup: {},
+    game_stats: {
+        "total_score" : float,
+        "avg_score" : float,
+        "tasks_completed" : int,
+        "bonus_credits" : int,
+        "scored_tasks" : int,
+        "tasks_remaining" : int,
+    },
+    next_document: {
+        content: ,
+        index: ,
+    }
+}
+
+===============================================
+
+cvm_game_session : {
+    user : {
+        type : "mturk"/"member"/"anonymous"
+
+    if type==mturk:
+        hitId :
+        assignment id:
+    },
+    batch_id : ObjectId - the _id of the batch,
+    game_stats : {...}
+    lane : int ~ 0 to batch.profile.replication
+    //task_scores : []
+}
+
+===============================================================================
+
+=== To do ===
+
+/tasks/choose-task/
+    * Make big-buttons clickable
+    * Format table: Codebook / tasks remaining / ( Dollars per hr OR points per hr. )
+* Add display logic for anonymous / member / mturks
+* Don't import menu: write it within the page
+    * Add mouseover for tables
+    * If mturk, open popup window for chosen task
+
+* Add batch.reports.forecasts
+    * Tasks available
+    * Median coding time
+    * Avg points per task
+    * Expected points / hour
+    * Hourly rate
+
+* Add Dollars/10k points to batch.profile
+* Make batch descriptions informative
+
+

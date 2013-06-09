@@ -1,0 +1,32 @@
+
+base/
+    base.html
+        {% block start_scripts %}
+        {% block menu %}
+        {% block breadcrumbs %}
+        {% block overlays %}
+
+        {% block main_container %}
+
+        {% block end_scripts %}
+
+    document-control.html
+    single-column.html
+    construction.html
+        (These three templates overwrite main_container to give structure to documents.)
+    
+    codebook-template.html
+
+
+=== Four main subdirectories ===
+Each of these 4 directories can include sensible defaults for start_scripts, menu, overlays, and end_scripts, stored in .htm files.  These files should be imported from within individual templates.
+
+public/
+    menu.htm
+    overlays.htm
+    end_scripts.htm
+members/
+admin/
+    menu.htm
+tasks/
+    menu.htm

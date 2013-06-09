@@ -1,0 +1,51 @@
+{% extends ../base/base.html %}
+
+{% block start_scripts %}
+<script type="text/javascript">
+$(function(){});
+</script>
+{% end block %}
+
+{% block start_scripts %}
+<script type="text/javascript">
+$(function(){});
+</script>
+{% end block %}
+
+{% block menu %}{% include "admin/menu.htm" %}{% endblock %}
+
+{% block main_container %}
+<div class="row">
+	<div class="span7 hero-unit">
+		<h2>Site administration</h2>
+		<p>...</p>
+	</div>
+	<div class="span3">
+		<h3>Quick links</h3>
+		<ul id="quick-links">
+		</ul>
+	</div>
+</div>
+
+<div id="mini-blocks" class="row">
+	<div class="cvm-masonry well">
+		<h3>Users</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Codebooks</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Collections</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<h3>Batches</h3>
+		<p>...</p>
+	</div>
+</div>
+{% end %}

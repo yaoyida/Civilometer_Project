@@ -1,0 +1,131 @@
+=== To do ===
+
+>>> Refactor Batch object
+
+>>> Add "view/" and "model/" directories
+    * Fix function names
+    * Move the remaining functions out of __init__.py
+    * Write tests for model logic
+    * Move "borrowed" functions from views/admin.py back to models/...
+
+>>> Finalize task sequence
+    * ...
+    * Write full spec
+    * APIs
+    * Termination behavior
+    
+>>> Finish Mturk integration
+    * ...
+    * Remove unused templates
+    * Test in sandbox
+
+>>> Write tests for the whole task sequence
+
+>>> Add kripp scoring function
+>>> Finish task screen flow
+>>> Write mturk instructions
+>>> Update codebook template
+
+
+
+=== Live service ===
+
+Deploy to heroku
+    * Add heroku hooks
+    * Add local_settings.py
+    * Transfer static files to S3
+    * Try configuring a worker node
+    * Write deploy script:
+        * Test repo for readiness
+        * Run tests
+        * Automatically rsync files to S3
+        * Heroku push
+
+=== Future milestones ===
+
+Add mailgun
+Cross-browser testing of tasks page
+
+Import good testing data sets
+    * News articles
+    * NYTimes comments
+    * Blog posts
+    
+    * Youtube comments?
+    * Campaign emails?
+
+Definitions page
+    * Add url: definitions/[index]/[slug]
+    * Scaffold details page
+        * What should this look like?
+    * Add fields to codebooks
+        * Index
+        * Icon
+        * Teaser
+        * Examples
+        
+        
+=== Notes from 2012/08/04 ===
+* Add batch.profile.priority logic
+* Create codebook fixtures
+* Create and document clean fixture sets
+* Build tests of all shapes and sizes
+
+>> Figure out how to add rate-limiting
+>> Figure out how to load-test the system
+* Get collection page working again...
+
+* Change helpers to view_helpers
+* Add view_helpers.get_all_user_json()
+
+* Change "cvm_user" collection to "cvm_user_profile"
+>> Build create/update user sequence
+>> Straighten out all import/create methods for collections
+
+* Remove unused headers in *_views.py
+* Come up with naming conventions for models methods
+
+
+=== Done ===
+* Get json import working: http://stackoverflow.com/questions/4404742/how-do-i-turn-mongodb-query-into-a-json
+* Move user_voice widget to the public (and members) pages only
+* Cancel "help us get funding" pop up
+
+Testing
+    * Build placeholder tests
+    * Figure out how to load fixtures for testing
+    * Copy loadfixtures from textbadger
+    
+>>> Add "cvm_app.algorithms" module
+    * Touch __init__.py
+    * Move Jenkins_hash.py > algorithms/jenkins.py
+    * Add kripp.py
+
+>>> Login sequence
+    * Get login/logout working smoothly
+    * Edit menus to allow smooth flow through the system
+    * Add admin_required decorator
+    * Add cvm_user_profile collection
+
+>>> Mturk integration
+    * Add mturk sandbox keys (to local_settings.py)
+    * Add mturk logic to game_session creation
+    * Add mturk routes:
+        tasks/mturk
+        tasks/mturk-preview
+        tasks/mturk-user-task
+    * Add mturk hooks to templates/js
+    * Test in sandbox
+
+>>> Add "view/" and "model/" directories
+    * Rename "helpers.py" as "view/helpers.py"
+    * Re-align urls with views
+    * Move all non-constructor functions to "model/helpers.py"
+        Default naming convention: "gen_[object_type]," as in "gen_game_session"
+        Only pass top-level objects
+        Keep internal logic to a minimum
+
+>>> Create stable fixture sets:
+    * test : Small fixtures covering important test cases
+    * demo : Fixtures for live demos; small, but as close to real data as possible
+        * Include actual codebooks

@@ -1,0 +1,22 @@
+
+
+75 and up : ['Awesome!', 'Fantastic', 'Superb!', 'Amazing!', 'Super accurate!', 'Excellent']
+50 - 74 : ['Great!', 'Great', 'Very good', 'Well done', 'Good accuracy', 'Good job!']
+25 - 50 : ['Good.', 'Not bad', 'Good work']
+0 - 25 : ['Ouch', 'Not so good', 'Oops']
+> 0 : ['Uh oh', 'Not good']
+
+
+Conditionals : total scored < 10
+Current score << Avg score
+Current score >> Avg score
+
+
+This is an unscored task.
+Keep it up!
+
+
+msg: "35! Not bad"
+
+
+def gen_feedback_message( last_score, game_stats )

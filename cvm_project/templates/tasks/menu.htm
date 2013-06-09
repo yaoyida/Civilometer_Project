@@ -1,0 +1,20 @@
+{% load cvm_app_tags %}
+<div class="navbar-inner">
+	<div class="container">
+	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </a>
+
+	  <img src="{{ STATIC_URL }}img/cvm-logo.gif" style="float:left; position:absolute; height:50px;">
+	  <a class="brand" {% if user_type != "mturk" %}href="/"{% endif %}>&nbsp;&nbsp;&nbsp;&nbsp;civilometer.com</a>
+      
+      <!-- These menu options are *not* collapsed for small screens -->
+	  <ul class="nav pull-right nav-collapse">
+        <li id="im-done-btn"><a href="/tasks/all-done/{{ game_session|mongo_id }}" id="quit-btn">I'm done</a></li>
+	  </ul>
+
+	</div>
+</div>
+

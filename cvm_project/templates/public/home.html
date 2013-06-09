@@ -1,0 +1,120 @@
+{% extends "base/base.html" %}
+
+{% block start_scripts %}
+<script type="text/javascript">
+$(function(){
+    cvmGraphs.linePlot("#todays-report-graph", cvmGraphs.genFakeSequence(14) );//d3.range(14).map(function(){ return Math.random()*10 }) );
+    
+    var k = 8;
+    var seq = cvmGraphs.genFakeSequence(k);
+    var v = Math.random();
+    var data = d3.range(k).map(function(i){ return {
+        'p' : seq[i],
+        's' : Math.random()*(d3.max(seq)-d3.min(seq))*(v+.1)
+    }});
+    cvmGraphs.dotPlot("#rep-aca-graph", data);
+    cvmGraphs.barChart("#issue-area-graph", cvmGraphs.genFakeSequence(6));
+    cvmGraphs.linePlot("#mentions-graph", cvmGraphs.genFakeSequence(90) );
+    //cvmGraphs.wordCloud("#insults-word-cloud", cvmGraphs.genFakeSequence(90) );
+    
+/*    
+	var fake_data = cvmGraphs.genFakeData(14, 1);
+	fake_data[0]["color"] = "#d84614";
+	fake_data[0]["lines"] = {"lineWidth" : "4"};
+    //$.plot($("#todays-report-graph"), fake_data);
+    
+    //$.plot($("#todays-report-graph"), fake_data[{"data":fake_data[0], "lines": {"show":true}, "color":"#d84614"}]);
+
+	//cvmGraphs.dotPlot('#issue-areas-graph',{});
+*/
+
+    $(".item")
+        .removeClass("active")
+        .prepend('<div class="pill" style="right:20px; bottom:30px; position:absolute;"><span class="label label-inverse">Warning : Fake data!</span></div>')
+    $(".item:first").addClass("active");
+
+	//Open please-help-modal after .4 sec
+/*
+    window.setTimeout(function(){
+		$('#please-help-modal').modal('toggle');
+	}, 1000);
+*/
+});
+</script>
+{% endblock %}
+
+{% block menu %}{% include "public/menu.htm" %}{% endblock %}
+{% block overlays %}{% include "public/overlays.htm" %}{% endblock %}
+
+{% block main_container %}
+
+<div class="row">
+	<div class="page-header">
+		<h1>Political Civilometer &nbsp;&nbsp;&nbsp;<small>Fair, clear, and accurate standards for political civility</small></h1>
+	</div>
+	<div class="span7 well">
+<!--		<img src="{{ STATIC_URL }}img/logo/civilometer-logo-small.gif"></img> -->
+		<div id="myCarousel" class="carousel slide">
+		  <!-- Carousel items -->
+		  <div class="carousel-inner">
+
+			<div class="item active"><div class="item-holder">
+				<h3>This Week's Report</h3>
+				<p>What's the temperature of national civility this week?</p>
+				<div id="todays-report-graph" class="plot-holder"></div>
+			</div></div>
+			<div class="item active"><div class="item-holder">
+				<h3>Republican reactions to the Supreme Court ruling on health care</h3>
+				<p>Which aspects of (in)civility are most prominent in this debate?</p>
+				<div id="rep-aca-graph" class="plot-holder"></div>
+			</div></div>
+			<div class="item active"><div class="item-holder">
+				<h3>Facts, sources, and evidence across issue areas</h3>
+				<p>Which topics of discussion are backed by facts?</p>
+				<div id="issue-area-graph" class="plot-holder"></div>
+			</div></div>
+
+            <div class="item active"><div class="item-holder">
+				<h3>Use of angry rhetoric about climate change in the last 90 days</h3>
+				<p>How is this emotion being used in that debate?</p>
+				<div id="mentions-graph" class="plot-holder"></div>
+			</div></div>
+<!--
+			<div class="item active"><div class="item-holder">
+				<h3>Favorite partisan insults</h3>
+				<p>What words do Reps and Dems use when they get mad?</p>				
+				<div id="insults-word-cloud" class="plot-holder"></div>
+			</div></div>
+-->
+		  </div>
+		  <!-- Carousel nav -->
+		  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+		</div>
+	</div>
+	<div class="span3">
+        <a class="btn btn-large btn-primary" href="/how-it-works/">How it works</a>
+        <a class="btn btn-large btn-primary" href="/play-with-data/">Play with data</a><br/>
+<!--        <a class="btn btn-large btn-primary" href="/tasks/choose-task/">Contribute coding</a><br/> -->
+        <br/>
+        
+		<div class="corner-right"><img src="{{ STATIC_URL }}img/random/noun_project_3178.png" class="flavor-pic"></div>
+		<h3>This site is a prototype</h3>
+		<p>For the moment, most of the data is fake, the text is lorem ipsum, and the icons are random.  Want to change that?  <a data-toggle="modal" href="#please-help-modal">Help us get funding!</a></p>
+		<hr/>
+
+		<div class="corner-right"><img src="{{ STATIC_URL }}img/random/noun_project_137.png" class="flavor-pic"></div>
+		<h3>Help us get funding!</h3>
+		<p>We've put in <a href="http://newschallenge.tumblr.com/post/25545682065/political-civil-o-meter">a grant application</a> to the <a href="http://newschallenge.tumblr.com/about">Knight Foundation's News Challenge</a>.  If you want to see the civilometer built in full, <strong>please tweet, like, plus, and share</strong> to help us win the contest!</p>
+		<hr/>
+<!--
+		<div class="corner-right"><img src="{{ STATIC_URL }}img/random/noun_project_2324.png" class="flavor-pic"></div>
+		<h3>Tell us what you like</h3>
+		<p>We will build what you want. Anywhere you see the <span class="label">Good idea!</span> badge, you can click to make the feature a higher priority.  Multiple clicks are allowed.  <strong>Please vote early and often!</strong></p>
+-->
+	</div>
+</div>
+{% endblock %}
+
+{% block end_scripts %}{% include "public/end-scripts.htm" %}{% endblock %}
+

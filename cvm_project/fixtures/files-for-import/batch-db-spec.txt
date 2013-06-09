@@ -1,0 +1,63 @@
+{
+	"_id" : ObjectId("50085ef80a665e14b21a4f7d"),
+	"profile" : {
+		"coders" : [
+			"micspa",
+			"admin"
+		],
+		"index" : 11,
+		"shuffle" : false,
+		"name" : "Batch 11",
+		"created_at" : ISODate("2012-07-19T15:24:40.339Z"),
+		"codebook_id" : ObjectId("5000351633679d0c5f9be6b7"),
+		"collection_id" : ObjectId("50002c1a33679d0c5f9be6a7"),
+		"pct_overlap" : 60,
+		"description" : "News sample A * Divisiveness (3)"
+	},
+	"documents" : [
+		{
+			"index" : 0,
+			"labels" : {
+				"admin" : [ ],
+				"micspa" : [ ]
+			}
+		},
+		{
+			"index" : 1,
+			"labels" : {
+				"admin" : [ ],
+				"micspa" : [ ]
+			}
+		},
+		{
+			"index" : 2,
+			"labels" : {
+				"admin" : [ ]
+			}
+		}
+	],
+	"reports" : {
+		"progress" : {
+			"coders" : {
+				"admin" : {
+					"assigned" : 16,
+					"percent" : 0,
+					"complete" : 0
+				},
+				"micspa" : {
+					"assigned" : 16,
+					"percent" : 0,
+					"complete" : 0
+				}
+			},
+			"summary" : {
+				"assigned" : 32,
+				"percent" : 0,
+				"complete" : 0
+			}
+		},
+		"reliability" : {
+			
+		}
+	}
+}

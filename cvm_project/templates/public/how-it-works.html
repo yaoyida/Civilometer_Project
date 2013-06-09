@@ -1,0 +1,89 @@
+{% extends "base/base.html" %}
+
+{% block menu %}{% include "public/menu.htm" %}{% endblock %}
+{% block overlays %}{% include "public/overlays.htm" %}{% endblock %}
+
+{% block main_container %}
+<div class="row">
+	<div class="span7 hero-unit">
+		<div class="corner-left">
+			<img src="{{ STATIC_URL }}img/random/noun_project_325.png"><br/>
+			<span class="label yes-do-this">Good idea!</span>
+		</div>
+		<h2>How it works</h2>
+		<p>We provide tools for measuring political civility, and apply them to lots of data in real time.  We are fair, transparent, accurate, and relevant.</p>
+	</div>
+	<div class="span3">
+		<h3>Quick links</h3>
+		<ul id="quick-links">
+		</ul>
+	</div>
+</div>
+
+<div id="mini-blocks" class="row">
+	<div class="cvm-masonry well">
+		<img src="{{ STATIC_URL }}img/random/noun_project_289.png" class="flavor-pic">
+		<h3>Goals</h3>
+		<p><ol>
+			<li>Hold politicians and newsmakers accountable for what they say.</li>
+			<li>Promote constructive public discussion about civility.</li>
+			<li>Share tools and data to encourage research on communication.</li>
+		</ol></p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<img src="{{ STATIC_URL }}img/random/noun_project_3129.png" class="flavor-pic">
+		<h3>Philosophy</h3>
+		<p>Civility starts with accountability.  Accountability starts with clear standards.  Clear standards start with accurate measurement.</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<img src="{{ STATIC_URL }}img/random/noun_project_325.png" class="flavor-pic">
+		<h3>Not-so-secret sauce</h3>
+		<p>We combine content analysis, crowdsourcing, and state-of-the-art algorithms to measure civility with high accuracy at large scale. This is computational social science at its best.</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<img src="{{ STATIC_URL }}img/random/noun_project_776.png" class="flavor-pic">
+		<h3>Due credit</h3>
+		<p>This prototype was built using using <a href="#">cyclone</a> and <a href="#">mongodb</a>. Responsive layouts are by <a href="#">Twitter bootstrap</a>, the <a href="#">bootswatch unity theme</a>, and the <a href="#">jquery</a> <a href="#">masonry</a> plugin.  Graphs are generated in <a href="#">d3</a>. Icons are provided by the <a href="#">noun project</a>.</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<img src="{{ STATIC_URL }}img/random/noun_project_3018.png" class="flavor-pic">
+		<h3>Data sources</h3>
+		<p>We constantly scan the web for new political content. Our system combines human and artificial intelligence to rate the civility of everything that gets said.</p>
+	</div>
+
+
+	<div class="cvm-masonry well">
+		<img src="{{ STATIC_URL }}img/random/noun_project_1067.png" class="flavor-pic">
+		<h3>Measurement</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<img src="{{ STATIC_URL }}img/random/noun_project_2146.png" class="flavor-pic">
+		<h3>Crowdsourcing</h3>
+		<p>...</p>
+	</div>
+
+	<div class="cvm-masonry well">
+		<img src="{{ STATIC_URL }}img/random/noun_project_1248.png" class="flavor-pic">
+		<h3>Algorithms</h3>
+		<p>...</p>
+	</div>
+	
+	<div class="cvm-masonry well">
+		<img src="{{ STATIC_URL }}img/random/noun_project_2886.png" class="flavor-pic">
+		<h3>Related research</h3>
+		<p>Daed si luap.  Daed si luap.  Surlaw eth ma I. Morbi leo mi, nonummy eget tristique non leo. </p>
+	</div>
+</div>
+
+
+</div>
+{% endblock %}
+
+{% block end_scripts %}{% include "public/end-scripts.htm" %}{% endblock %}
+

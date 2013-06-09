@@ -1,0 +1,55 @@
+cvm_batch : {
+	"_id" : ObjectId("501c06d10a665e0fdbeab251"),
+	"profile" : {
+		"collection_ids" : [
+			ObjectId("5010467b0a665e16b6251e19")
+		],
+		"description" : "Collection A * Yida's new codebook (1)",
+		"codebook_id" : ObjectId("50102f7f0a665e14a6b990ab"),
+		"replication" : 2,
+		"game_setup" : {
+			"bonus_amount" : 2,
+			"exchange_rate" : 2,
+			"bonus_frequency" : 25
+		},
+		"pct_overlap" : 50,
+		"index" : 1,
+		"name" : "Batch 1",
+		"created_at" : ISODate("2012-08-03T13:13:53.762Z"),
+		"parent_batch_id" : null,
+		"doc_size" : 10
+	},
+	"reports" : {
+		"progress" : {
+			"task_remaining_list" : [
+				0,
+				5
+			]
+		},
+		"reliability" : {
+			
+		}
+	}
+}
+
+
+cvm_response : {
+    "_id" : ObjectId("501c06d10a665e0fdbeab251"),
+    "batch_id" : ObjectId("5010467b0a665e16b6251e19"),
+    "document_id" : ObjectId("5010467b0a665e16b6251e19"),
+    "lanes" : {
+        "1" : {
+            "game_session_id" : "",
+            "created_at" : "",
+            "finished_at" : "",
+            "labels" : label_obj
+        },
+        "0" : {
+            "game_session_id" : "501c06f20a665e0fdbeab255",
+            "created_at" : ISODate("2012-08-03T13:14:39.107Z"),
+            "finished_at" : ISODate("2012-08-03T13:14:44.089Z"),
+            "labels" : label_obj
+        }
+    },
+    "old_responses" : [ response_id, response_id, response_id, ... ]
+}

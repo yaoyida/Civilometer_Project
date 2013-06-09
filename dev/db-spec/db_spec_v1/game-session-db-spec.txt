@@ -1,0 +1,87 @@
+{
+	"_id" : ObjectId("5017dec10a665e09e0ffc086"),
+	"lane" : NumberLong(0),
+	"created_at" : ISODate("2012-07-31T09:33:53.081Z"),
+	"game_stats" : {
+		"bonus_credits" : 0,
+		"total_score" : 0,
+		"avg_score" : 0,
+		"scored_tasks" : 0,
+		"tasks_remaining" : -1,
+		"tasks_completed" : 0
+	},
+	"user" : {
+		"screen_info" : {
+			"browser" : {
+				"webkit" : true,
+				"version" : "536.11",
+				"safari" : true
+			},
+			"random" : 0.7324718360323459,
+			"screen_width" : 1280,
+			"screen_height" : 1024
+		},
+		"user_type" : "anonymous"
+	},
+	"batch_id" : "5012f13e0a665e12d4a6f297"
+}
+
+=== The contents of the user object depend on user_type ===
+
+"user" : {
+	"user_type" : "anonymous",
+	"screen_info" : {...}
+}
+
+"user" : {
+	"user_type" : "member",
+    "user_info" : {
+        "username" : 'asdfasdfasdfsa'
+    },
+	"screen_info" : {...}
+}
+
+"user" : {
+	"user_type" : "mturk",
+    "user_info" : {
+        "assignmentId" : '',
+        "workerId" : '',
+        "hitId" : '',
+        "turkSubmitTo" : ''
+    },
+	"screen_info" : {...}
+},
+
+
+
+
+
+mturk example:
+{
+	"_id" : ObjectId("501c0a4a0a665e10165f3b61"),
+	"batch_id" : ObjectId("501c0a420a665e10165f3b60"),
+	"created_at" : ISODate("2012-08-03T13:28:42.992Z"),
+	"game_stats" : {
+		"last_score" : -39,
+		"total_score" : -76,
+		"avg_score" : -19,
+		"scored_tasks" : 2,
+		"tasks_until_next_bonus" : 21,
+		"tasks_remaining" : 6,
+		"tasks_completed" : 4
+	},
+	"lane" : NumberLong(0),
+	"user" : {
+		"screen_info" : {
+			
+		},
+		"user_info" : {
+			"assignmentIdList" : ["\"efefeafefef\""],
+			"workerId" : "\"fefadfdfefe\"",
+			"hitId" : null,
+			"turkSubmitTo" : null
+		},
+		"user_type" : "mturk"
+	}
+}
+

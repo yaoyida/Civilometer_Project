@@ -1,0 +1,75 @@
+<!--We should fix the indexing problem tomorrow!!!(Aug 2nd) Check models to see the name-->
+
+{% extends "base/document-control.html" %}
+{% load cvm_app_tags %}
+
+{% block start_scripts %}
+<script src="{{ STATIC_URL }}cvm-documents.js" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}cvm-tasks.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+var taskManager = new TaskManager("{{game_session|mongo_id}}", "{{csrf_token}}");
+
+$(function(){
+    //Init taskManager
+    taskManager.init();
+
+    $("#doc-box").click( taskManager.addAlert );
+    
+    //$("#task-intro-modal").modal({show:true});
+    $("#instructions-btn").click(function(){
+        $("#task-instructions-modal").modal({show:true});
+    });//.click();
+    $("#stats-btn").click(function(){
+        $("#task-stats-modal").modal({show:true});
+    });
+    $("#quit-btn").click(function(){
+        $("#task-quit-modal").modal({show:true});
+    });
+});
+</script>
+{% endblock %}
+
+{% block menu %}{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container">
+    <img src="{{ STATIC_URL }}img/cvm-logo.gif" style="float:left; position:absolute; height:50px;">
+    <ul class="breadcrumb">
+      <li class="score-bar" style="margin-left:20px">
+        Total score: <span id="breadcrumb-total-score">{{ game_session.game_stats.total_score|floatformat:0 }}</span>
+        <span class="divider">=</span>
+        <span id="breadcrumb-avg-score">{{ game_session.game_stats.avg_score|floatformat:1 }}</span> avg. score
+        <span class="divider">&times; ( </span>
+        <span id="breadcrumb-tasks-completed">{{ game_session.game_stats.tasks_completed }}</span> tasks completed
+        <span class="divider">+</span>
+        <span id="breadcrumb-avg-score">{{ game_session.game_stats.bonus_credits }}</span> bonus credits
+        <span class="divider"> )</span>
+      </li>
+    
+      <li id="im-done-btn" style="float:right">
+          <a href="#" id="instructions-btn">Instructions</a>
+          <span class="divider"> | </span>
+          <a href="#" id="stats-btn">Statistics</a>
+          <span class="divider"> | </span>
+          <a href="#" id="quit-btn" class="auto">Quit &raquo;</a>
+      </li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block overlays %}{% include "tasks/overlays.html" %}{% endblock%}
+
+{% block control %}
+<div class="row-fluid">
+    <div id="codebook" class="span12 well"><form id="codebook-form">
+        {% include "base/codebook-template.html" %}
+        <a id="submit-btn" class="btn btn-primary rightside">Submit</a>
+        <a id="next-btn" class="btn btn-primary rightside">Next &raquo;</a>
+    </form></div>
+
+    <div id="messages" class="row-fluid"></div>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

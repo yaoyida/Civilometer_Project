@@ -1,0 +1,19 @@
+Semi-urgent stuff for 7/20/2012
+
+=== Joshua ===
+
+* Civilometer login/logout:
+    We need login/logout to work exactly the same way it works in Textbadger.  Same menu links, same modal dialog, same AJAX and jquery.  Getting this done is top priority for today, because lots of other steps are going to depend on it.  Can you implement that today?
+    
+* All the good stuff we talked about yesterday...
+    DataTables - These look basically done, yes?
+    Codebook debugging - AFAICT, this works now.  Happy.
+    Add MetaData - Can you close this out today?
+    
+    
+=== Yida ===
+* Build the admin/users page - This should look just like TextBadger (for now)
+* Activate the "Add user" ajax button on the codebooks page - This should look just like TextBadger (for now)
+* Create an "Import codebook" ajax button on the admin/codebooks page
+    This should load an external file containing codebook json into the cvm_codebook collection.  ***If the json file contains an _id field, ignore it!  We want mongo to create a new unique id for each codebook imported.***  This button should *replace* the "Create codebook" button.
+* Revise the backend for the new "start batch" dialog.

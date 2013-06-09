@@ -1,0 +1,86 @@
+{% extends "base/single-column.html" %}
+{% load cvm_app_tags %}
+
+{% block start_scripts %}
+<script type="text/javascript">
+function filterAll(){
+    $("table#codebooks tbody tr").fadeIn();
+}
+
+function filterCurrent(){
+    $("table#codebooks tbody tr:not(.current)").fadeOut();
+    $("table#codebooks tbody tr.current").fadeIn();
+}
+
+function filterBatch(){
+    $("table#codebooks tbody tr:not(.batches)").fadeOut();
+    $("table#codebooks tbody tr.batches").fadeIn();
+}
+
+$(function(){
+    //Highlight navbar
+    $('a[href*="/batches/"]').parent().addClass("active");
+
+    //Set up listeners for the codebook filter dropdown
+    $("#filter-menu ul li a").click(function(){
+        $("#filter-menu ul li a i.icon-ok").remove();
+        $(this).prepend('<i class="icon-ok"></i> ');
+        eval( $(this).attr('id')+'()' );
+    });
+
+    //By default, filter to show only the current version of codebooks
+    $("#filterCurrent").prepend('<i class="icon-ok"></i> ');
+    $("table#codebooks tbody tr:not(.current)").hide();
+    $("table#codebooks tbody tr.current").show();
+});
+</script>
+{% endblock %}
+
+{% block menu %}{% include "admin/menu.htm" %}{% endblock %}
+
+{% block main_column %}
+
+<!-- Batches ------------------------->
+<a class="btn btn-primary open-modal rightside">Start a batch</a>
+{% include "forms/start-batch.htm" %}
+
+<a class="btn btn-primary open-modal rightside">Compile a batch</a>
+{% include "forms/compile-batch.htm" %}
+
+<h3 id="batches">Batches</h3>
+<table class="well wide">
+  {% if batches %}
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th>Progress</th>
+      <th>Priority</th>
+      <th></th>
+    </tr>
+  </thead>
+  {% endif %}
+  <tbody>
+  {% for p in batches %}
+    <tr href="/batch/{{ p|mongo_id }}">
+      <td><a href="/batch/{{ p|mongo_id }}">{{ p.profile.name }} : {{ p.profile.description }}</a></td>
+      <td><div class="progress progress-striped" style="margin:0px">
+          <div class="bar" style="width: {{ p.reports.progress.summary.percent }}%;"></div>
+      </div></td>
+      <td>{{ p.reports.progress.summary.percent }}%</td>
+      <td>{{ p.profile.priority }}</td>
+    </tr>
+  {% empty %}
+    <tr>
+      <td colspan=4><br/>Once you have at least one codebook and one collection, you can launch a batch.<br/><br/>
+<!--        <a href="/batch/1">temp-link: "/batch/1"</a> -->
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<br/><br/>
+
+
+{% endblock %}
+

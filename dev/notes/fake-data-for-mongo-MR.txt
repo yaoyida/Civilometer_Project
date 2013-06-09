@@ -1,0 +1,49 @@
+Joshua -
+  On the bus on the way home, I whipped up some fake data for you to run mongo queries against.  The data is in the git repo under fixtures/test-2/.  Yida can show you the syntax to load the fixtures into memory.
+  
+  I've pasted an example of a document object below.  It's a skeleton of the spec we outlined last week, but it should have enough of the critical information (especially dates) you need to make your logic work.
+  
+Happy coding!
+- Abe
+
+
+
+{
+    "content": "Purus nulla dis nibh sed porttitor natoque netus nisi cum. Etiam felis sed. Lorem class elit gravida iaculis. Fames vitae lacinia montes facilisis massa. Nulla dolor magnis id congue dis nibh sit natoque ve non. Purus curae. Risus felis. Augue porta natoque pulvinar class turpis litora posuere sem parturient montes at. Lacus lorem. Ipsum purus. Augue dolor. Etiam nulla lacus ante a erat purus vehicula leo taciti proin. Morbi proin varius aptent curae. Metus velit tellus neque.", 
+    "_id": {
+      "$oid": "502005d20a665e0efae37bbb"
+    }, 
+    "civility_labels": {
+      "public import": {
+        "score": 7
+      }, 
+      "emotional appeals": {
+        "score": 4
+      }, 
+      "infotainment": {
+        "score": 3
+      }, 
+      "objective tone": {
+        "score": 9
+      }, 
+      "respect for others": {
+        "score": 9
+      }, 
+      "emotional reactions": {
+        "score": 1
+      }, 
+      "facts, sources, and evidence": {
+        "score": 1
+      }, 
+      "divisiveness": {
+        "score": 1
+      }
+    }, 
+    "metadata": {
+      "timestamp": "2011-06-27T06:46:58", 
+      "source": "marcmasferrer.typepad.com", 
+      "words": "77", 
+      "sentences": "14"
+    }
+  }
+}

@@ -1,0 +1,144 @@
+{% extends "base/single-column.html" %}
+{% load cvm_app_tags %}
+
+{% block start_scripts %}
+<script type="text/javascript">
+$(function(){
+    $("#task-intro-modal").modal({show:true});
+    
+    
+    $(".create-game-session").click(function(){
+        var batch_id = $(this).attr("data-batch-id");
+
+        var user = {
+            "user_type" : '{{user_type}}',
+            "screen_info" : {
+                "random" : Math.random(),
+                "screen_height" : screen.height,
+                "screen_width" : screen.width,
+                "browser" : $.browser
+            }
+        };
+        
+        if( user["user_type"] == "mturk" ){
+            user["user_info"] = {
+                "assignmentId" : '{{ assignmentId }}',
+                "workerId" : '{{workerId}}',
+                "hitId" : '{{hitId}}',
+                "turkSubmitTo" : '{{turkSubmitTo}}'
+            };
+        }/*else if( user["user_type"] == "member" ){
+            //!
+        }else if( user["user_type"] == "anonymous" ){
+            //!
+        }*/
+        
+        $.post(
+            '/tasks/ajax/create-game-session/',
+            JSON.stringify({
+                'batch_id': batch_id,
+                'csrfmiddlewaretoken': '{{csrf_token}}',
+                'user': user
+            }),
+            function(data){
+                if( data.status == "success" ){
+                    //! redirect to appropriate page: /tasks/[game_session_id]
+                    location.href = '/tasks/game-session/'+data.gs_id+'/';
+                    //window.open('/tasks/'+data.gs_id+'/');
+                } else {
+                    alert( data.msg );
+                }
+            },
+            'json'
+        );
+    });
+});
+</script>
+{% endblock %}
+
+{% block menu %}
+<div class="navbar-inner">
+	<div class="container">
+	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </a>
+
+	  <img src="{{ STATIC_URL }}img/cvm-logo.gif" style="float:left; position:absolute; height:50px;">
+	  <a class="brand" {% if user_type != "mturk" %}href="/"{% endif %}>&nbsp;&nbsp;&nbsp;&nbsp;civilometer.com</a>
+      
+      <!-- These menu options are *not* collapsed for small screens -->
+	  <ul class="nav pull-right nav-collapse">
+        {% if user_type != "mturk" %}<li id="im-done-btn"><a href="/" id="quit-btn">Home &raquo;</a></li>{% endif %}
+	  </ul>
+
+	</div>
+</div>
+{% endblock %}
+
+{% block overlays %}{% include "tasks/overlays.html" %}{% endblock%}
+
+{% block main_column %}
+
+<!-- Batches ------------------------->
+
+<h3 id="batches">Please choose answer categories to work on</h3>
+<br/>
+<div class="row-fluid">
+{% for b in batches|slice:":3" %}
+    <div class="well span4 cvm-big-button create-game-session" data-batch-id="{{ b|mongo_id }}">
+        <div class="corner-right"><img src="http://localhost:8000/static/img/random/noun_project_1618.png" class="flavor-pic"></div>
+        <h3>{{ b.profile.name }}</h3>
+        <p>Rate blog posts in terms of objective tone. {{ b.profile.description }}</p>
+        <p><dl id="doc-metadata" class="dl-horizontal">
+            <!-- {% if user_type != "mturk" %}<dt>Points/hour</dt><dd>~22,800</dd>{% endif %} -->
+<!--             {% if user_type != "mturk" %}<dt>Hourly rate</dt><dd>~$4.56</dd>{% endif %} -->
+<!--            <dt>Tasks available</dt><dd>456</dd> -->
+            <dt></dt><dd>&nbsp;</dd>
+<!--
+            <dt>Med. time/task</dt><dd>14 sec.</dd>
+            <dt>Avg. points/task</dt><dd>45</dd>
+            <dt>Dollars/10k pts</dt><dd>$2.00</dd>
+-->
+        </dl></p>
+<!--
+        <h3>{{ b.profile.name }}</h3>
+        <p>{{ b.profile.description }}</p>
+-->
+    </div>
+{% endfor %}
+</div>
+
+<hr/>
+<h5>All batches</h5>
+<table class="well wide">
+  {% if batches %}
+  <thead>
+    <tr>
+      <th>Codebook</th>
+      <th>Tasks remaining</th>
+    </tr>
+  </thead>
+  {% endif %}
+  <tbody>
+  {% for b in batches %}
+    <tr href="#" class="create-game-session" data-batch-id="{{ b|mongo_id }}">
+      <td><a href="#">{{ b.profile.name }}</a></td>
+      <td>{{ b.reports.progress.task_remaining_list.0 }}</td>
+    </tr>
+  {% empty %}
+    <tr>
+      <td colspan=4><br/>Once you have at least one codebook and one collection, you can launch a batch.<br/><br/>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<br/><br/>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
+

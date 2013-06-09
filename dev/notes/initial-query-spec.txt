@@ -1,0 +1,42 @@
+$.post("/api/query-count/", {"batch_id":"5012f12e0a665e12d4a6f296", "query_word":"Texas"}, function(data){console.log(data)}, "json" );
+
+{
+    status: "success"/"failed",
+    msg : "Failure message",
+    query : {
+        query_type: "query-count",
+        batch_id: "XXXXXXXX",
+        query_word: "Texas",
+        query_started_at: Datetime,
+        query_finished_at: Datetime,
+    },
+    result : {
+        yes : 25,
+        no : 124
+    }
+}
+
+
+## python-based ###
+
+batch = mongo. .....
+
+for doc in batch:
+    ...
+    
+    
+    
+### mongo-based ###
+
+batch = mongo. .....
+collection_ids = batch.profile.collection_ids
+
+for c_id in collection_ids:
+    collection = mongo.get_collection("cvm_collection").findOne({"_id":c_id},{"profile":1})
+    size = collection["profile"]["size"]
+    
+    yes_count = mongo.get_collection("cvm_collection").
+    
+    
+    
+    

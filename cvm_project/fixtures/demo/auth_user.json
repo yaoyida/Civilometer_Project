@@ -1,0 +1,19 @@
+[{
+    "_id" : {
+        "$oid" : "4fe5f8592fa6cd0882000000"
+    },
+    "username" : "admin",
+    "first_name" : "Abe",
+    "last_name" : "Gong",
+    "is_active" : true,
+    "email" : "agong@umich.edu",
+    "is_superuser" : true,
+    "is_staff" : true,
+    "last_login" : {
+        "$date" : 1342173649210
+    },
+    "password" : "sha1$518d6$81fdfa86630fdeba7a1e3f2235c8314155e85a5a",
+    "date_joined" : {
+        "$date" : 1340453385520
+    }
+}]
